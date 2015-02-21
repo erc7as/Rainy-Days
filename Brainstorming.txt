@@ -1,0 +1,37 @@
+Rainy Days Brainstorming
+
+Umbrella Functions
+	Context sensitivity
+	open-close umbrella
+	magic (?)
+	poking
+	float gaps
+	boat
+	hiding
+	hook/pull
+	zip-line
+	level-exclusive powerups?
+	
+
+Other Puzzle Elements
+	puddle portals?
+	water puzzles - water levels, rain falling
+	wet-ometer: balancing shielding from rain w/ doing other stuff w/ umbrella
+	
+combat would be non-existant
+	
+	
+4:3 aspect ratio
+
+Two primary tones:
+	sky clear
+		bright colors, cheerful audio
+	sky cloudy
+		darker/grayscale colors, gloomier audio
+
+Level changes after the sky clear: 
+	access to new things/new things visible
+	music/color changes
+	
+
+ambient audio
