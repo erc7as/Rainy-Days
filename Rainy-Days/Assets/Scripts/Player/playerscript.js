@@ -9,16 +9,18 @@ function Start () {
 
 function OnCollisionEnter2D(coll: Collision2D) {
 	print("Coll Enter: " + coll.contacts[0].normal);
-	if (coll.contacts[0].normal.x < coll.contacts[0].normal.y) {
+	if (coll.contacts[0].normal.y > 0) {
     	grounded = true;
 //    	print("Ground collision");
 	}
 }
 
 function OnCollisionExit2D(coll: Collision2D) {
-    	print("Coll Exit: " + coll.contacts[0].normal);
+	print("Coll Exit: " + coll.contacts[0].normal);
+	if (coll.contacts[0].normal.y > 0) {
     	grounded = false;
 //    	print("Ground collision exit");
+	}
 }
 
 function Update () {
