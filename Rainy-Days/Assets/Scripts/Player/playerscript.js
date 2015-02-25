@@ -3,6 +3,7 @@
 static var speed : int = 10;
 static var jumpspeed : int = 20;
 var grounded : boolean = false;
+var direction : boolean = true; //facing left is true
 
 function Start () {
 }
@@ -25,16 +26,28 @@ function OnCollisionExit2D(coll: Collision2D) {
 
 function Update () {
 
+
 	if (Input.GetKey(KeyCode.UpArrow) && grounded) {
 		rigidbody2D.velocity.y = jumpspeed;
 	}
 	if (Input.GetKey(KeyCode.LeftArrow)) {
 //		rigidbody2D.velocity.x = -speed;
 		transform.Translate (Vector2(-1,0) * Time.deltaTime*speed);
+		if(!direction) {
+		transform.localScale.x *= -1;
+		direction = true;
+		}
 	}
 	if (Input.GetKey(KeyCode.RightArrow)) {
 //		rigidbody2D.velocity.x = speed;
 		transform.Translate (Vector2(1,0) * Time.deltaTime*speed);
+		if(direction) {
+		transform.localScale.x *= -1;
+		direction = false;
+		}
+	}
+	if (Input.GetKey(KeyCode.DownArrow)) {
+	//make umbrella go down
 	}
 
 }
