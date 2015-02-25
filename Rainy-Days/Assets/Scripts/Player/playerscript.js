@@ -4,6 +4,7 @@ static var speed : int = 10;
 static var jumpspeed : int = 20;
 var grounded : boolean = false;
 var direction : boolean = true; //facing left is true
+var umbrellaUp : boolean = true; //default will be to have the umbrella be up
 
 function Start () {
 }
@@ -48,6 +49,7 @@ function Update () {
 	}
 	if (Input.GetKey(KeyCode.DownArrow)) {
 	//make umbrella go down
+		umbrellaUp = false; //should enable features only available when umbrella is down
 	}
 
 }
