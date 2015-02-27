@@ -5,8 +5,13 @@ static var jumpspeed : int = 20;
 var grounded : boolean = false;
 var direction : boolean = true; //facing left is true
 var umbrellaUp : boolean = true; //default will be to have the umbrella be up
+//var spriteRnd : SpriteRenderer;
+//var spriteRndUmbr : SpriteRenderer;
+var umbrDownSprite : Sprite;
+var umbrUpSprite : Sprite;
 
 function Start () {
+	
 }
 
 function OnCollisionEnter2D(coll: Collision2D) {
@@ -47,9 +52,19 @@ function Update () {
 		direction = false;
 		}
 	}
-	if (Input.GetKey(KeyCode.DownArrow)) {
+	if (Input.GetKey(KeyCode.DownArrow) && umbrellaUp == true) {
 	//make umbrella go down
 		umbrellaUp = false; //should enable features only available when umbrella is down
+		//spriteRnd = renderer as SpriteRenderer;
+	//	GetComponent(SpriteRenderer).sprite = Resources.Load("Assets/Sprite/_Character/unicornpusheen.png", typeof(Sprite));
+	 gameObject.GetComponent(SpriteRenderer).sprite = umbrDownSprite;
+	}
+		if (Input.GetKey(KeyCode.A) && umbrellaUp == false) {
+	//make umbrella go down
+		umbrellaUp = true; //should enable features only available when umbrella is down
+		//spriteRnd = renderer as SpriteRenderer;
+	//	GetComponent(SpriteRenderer).sprite = Resources.Load("Assets/Sprite/_Character/unicornpusheen.png", typeof(Sprite));
+	 gameObject.GetComponent(SpriteRenderer).sprite = umbrUpSprite;
 	}
 
 }
