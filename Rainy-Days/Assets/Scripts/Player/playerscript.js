@@ -57,14 +57,14 @@ function Update () {
 		umbrellaUp = false; //should enable features only available when umbrella is down
 		//spriteRnd = renderer as SpriteRenderer;
 	//	GetComponent(SpriteRenderer).sprite = Resources.Load("Assets/Sprite/_Character/unicornpusheen.png", typeof(Sprite));
-	 gameObject.GetComponent(SpriteRenderer).sprite = umbrDownSprite;
+		gameObject.GetComponent(SpriteRenderer).sprite = umbrDownSprite;
 	}
-		if (Input.GetKey(KeyCode.A) && umbrellaUp == false) {
+	if (Input.GetKey(KeyCode.A) && umbrellaUp == false) {
 	//make umbrella go down
 		umbrellaUp = true; //should enable features only available when umbrella is down
 		//spriteRnd = renderer as SpriteRenderer;
 	//	GetComponent(SpriteRenderer).sprite = Resources.Load("Assets/Sprite/_Character/unicornpusheen.png", typeof(Sprite));
-	 gameObject.GetComponent(SpriteRenderer).sprite = umbrUpSprite;
+		gameObject.GetComponent(SpriteRenderer).sprite = umbrUpSprite;
 	}
 
 }
