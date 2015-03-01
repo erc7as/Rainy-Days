@@ -5,10 +5,12 @@ static var jumpspeed : int = 20;
 var grounded : boolean = false;
 var direction : boolean = true; //facing left is true
 var umbrellaUp : boolean = true; //default will be to have the umbrella be up
+var onWater : boolean = true; //NEED COLLISION, A METHOD TO MAKE THIS TRUE IF PERSON ENCOUNTERS WATER
 //var spriteRnd : SpriteRenderer;
 //var spriteRndUmbr : SpriteRenderer;
 var umbrDownSprite : Sprite;
 var umbrUpSprite : Sprite;
+var onWaterSprite : Sprite;
 
 function Start () {
 	
@@ -64,6 +66,10 @@ function Update () {
 		//spriteRnd = renderer as SpriteRenderer;
 	//	GetComponent(SpriteRenderer).sprite = Resources.Load("Assets/Sprite/_Character/unicornpusheen.png", typeof(Sprite));
 
+	}
+	if(onWater) {
+	gameObject.GetComponent(SpriteRenderer).sprite = onWaterSprite;
+	console.log("hi");
 	}
 		
 
