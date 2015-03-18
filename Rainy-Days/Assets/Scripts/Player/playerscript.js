@@ -69,7 +69,7 @@ function Update () {
 	}
 	if(onWater) {
 	gameObject.GetComponent(SpriteRenderer).sprite = onWaterSprite;
-	console.log("hi");
+	//console.log("hi");
 	}
 		
 
