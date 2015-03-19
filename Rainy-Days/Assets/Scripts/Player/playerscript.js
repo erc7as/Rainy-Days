@@ -1,4 +1,4 @@
-﻿#pragma strict
+#pragma strict
 
 static var speed : int = 10;
 static var jumpspeed : int = 20;
@@ -11,6 +11,8 @@ var onWater : boolean = true; //NEED COLLISION, A METHOD TO MAKE THIS TRUE IF PE
 var umbrDownSprite : Sprite;
 var umbrUpSprite : Sprite;
 var onWaterSprite : Sprite;
+var sunbeam : Sprite;
+var sunbeamCounter : int = 0;
 
 function Start () {
 	
@@ -22,6 +24,12 @@ function OnCollisionEnter2D(coll: Collision2D) {
     	grounded = true;
 //    	print("Ground collision");
 	}
+	
+	if (coll.gameObject.name == "sunbeam") {
+		Destroy(coll.gameObject);
+		sunbeamCounter++;
+	}
+	print(sunbeamCounter);
 }
 
 function OnCollisionExit2D(coll: Collision2D) {
@@ -69,8 +77,8 @@ function Update () {
 	}
 	if(onWater) {
 	gameObject.GetComponent(SpriteRenderer).sprite = onWaterSprite;
-	//console.log("hi");
 	}
-		
+	
+	
 
 }
