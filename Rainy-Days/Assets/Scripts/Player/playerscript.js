@@ -40,6 +40,32 @@ function OnCollisionExit2D(coll: Collision2D) {
 	}
 }
 
+function OnTriggerEnter2D(trig: Collider2D) {
+if(trig.gameObject.name == "water" && umbrellaUp) {
+onWater = true;
+gameObject.GetComponent(SpriteRenderer).sprite = onWaterSprite;
+} else if (trig.gameObject.name == "water" && !umbrellaUp) {
+//respawn
+
+transform.position = Vector3(4, -4.9, 0);
+
+}
+}
+
+function OnTriggerExit2D(trig: Collider2D) {
+if(trig.gameObject.name == "water") {
+onWater = false;
+if(umbrellaUp){
+gameObject.GetComponent(SpriteRenderer).sprite = umbrUpSprite;
+}
+else { //getting respawned out of water, umbrella still needs to be down
+gameObject.GetComponent(SpriteRenderer).sprite = umbrDownSprite;
+}
+
+}
+
+}
+
 function Update () {
 
 
