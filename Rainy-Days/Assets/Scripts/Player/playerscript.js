@@ -46,7 +46,8 @@ onWater = true;
 gameObject.GetComponent(SpriteRenderer).sprite = onWaterSprite;
 } else if (trig.gameObject.name == "water" && !umbrellaUp) {
 //respawn
-
+//**now this is hardcoded to a position right outside the water since there is just one water spot
+//**this could be changed
 transform.position = Vector3(4, -4.9, 0);
 
 }
