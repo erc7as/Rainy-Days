@@ -28,6 +28,7 @@ function OnCollisionEnter2D(coll: Collision2D) {
 	if (coll.gameObject.name == "sunbeam") {
 		Destroy(coll.gameObject);
 		sunbeamCounter++;
+		grounded = false;
 	}
 	
 	if (coll.gameObject.name == "blockage" && sunbeamCounter == 2) {
