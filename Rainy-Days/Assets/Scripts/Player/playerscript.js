@@ -15,7 +15,7 @@ var sunbeam : Sprite;
 var sunbeamCounter : int = 0;
 
 function Start () {
-	
+
 }
 
 function OnCollisionEnter2D(coll: Collision2D) {
@@ -28,6 +28,11 @@ function OnCollisionEnter2D(coll: Collision2D) {
 	if (coll.gameObject.name == "sunbeam") {
 		Destroy(coll.gameObject);
 		sunbeamCounter++;
+	}
+	
+	if (coll.gameObject.name == "blockage" && sunbeamCounter == 2) {
+		Destroy(coll.gameObject);
+		grounded = false;
 	}
 	print(sunbeamCounter);
 }
@@ -70,7 +75,7 @@ gameObject.GetComponent(SpriteRenderer).sprite = umbrDownSprite;
 function Update () {
 
 
-	if (Input.GetKey(KeyCode.UpArrow) && grounded) {
+	if (Input.GetKey(KeyCode.UpArrow) && grounded && !onWater) {
 		rigidbody2D.velocity.y = jumpspeed;
 	}
 	if (Input.GetKey(KeyCode.LeftArrow)) {
@@ -93,8 +98,12 @@ function Update () {
 	//make umbrella go down
 	if(umbrellaUp){
 		 gameObject.GetComponent(SpriteRenderer).sprite = umbrDownSprite;
+		 rigidbody2D.gravityScale = 8;
+		 rigidbody2D.drag = 0;
 	} else {
 	 gameObject.GetComponent(SpriteRenderer).sprite = umbrUpSprite;
+	 rigidbody2D.gravityScale = 2;
+	 rigidbody2D.drag = 5;
 	}
 	
 		umbrellaUp = !umbrellaUp; //should enable features only available when umbrella is down
