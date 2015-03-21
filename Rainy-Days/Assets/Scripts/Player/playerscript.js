@@ -19,7 +19,6 @@ function Start () {
 }
 
 function OnCollisionEnter2D(coll: Collision2D) {
-	print("Coll Enter: " + coll.contacts[0].normal);
 	if (coll.contacts[0].normal.y > 0) {
     	grounded = true;
 //    	print("Ground collision");
@@ -35,11 +34,11 @@ function OnCollisionEnter2D(coll: Collision2D) {
 		Destroy(coll.gameObject);
 		grounded = false;
 	}
-	print(sunbeamCounter);
+//	print(sunbeamCounter);
 }
 
 function OnCollisionExit2D(coll: Collision2D) {
-	print("Coll Exit: " + coll.contacts[0].normal);
+	print("Collision exit: " + coll.gameObject.name);
 	if (coll.contacts[0].normal.y > 0) {
     	grounded = false;
 //    	print("Ground collision exit");
@@ -47,29 +46,30 @@ function OnCollisionExit2D(coll: Collision2D) {
 }
 
 function OnTriggerEnter2D(trig: Collider2D) {
-if(trig.gameObject.name == "water" && umbrellaUp) {
-onWater = true;
-gameObject.GetComponent(SpriteRenderer).sprite = onWaterSprite;
-} else if (trig.gameObject.name == "water" && !umbrellaUp) {
-//respawn
-//**now this is hardcoded to a position right outside the water since there is just one water spot
-//**this could be changed
-transform.position = Vector3(4, -4.9, 0);
-
-}
+	if(trig.gameObject.name == "water") {
+		if (umbrellaUp) {
+			onWater = true;
+			gameObject.GetComponent(SpriteRenderer).sprite = onWaterSprite;
+		} else if (!umbrellaUp) {
+			//respawn
+			//**now this is hardcoded to a position right outside the water since there is just one water spot
+			//**this could be changed
+			transform.position = Vector3(4, -4.9, 0);
+		}
+	}
 }
 
 function OnTriggerExit2D(trig: Collider2D) {
-if(trig.gameObject.name == "water") {
-onWater = false;
-if(umbrellaUp){
-gameObject.GetComponent(SpriteRenderer).sprite = umbrUpSprite;
-}
-else { //getting respawned out of water, umbrella still needs to be down
-gameObject.GetComponent(SpriteRenderer).sprite = umbrDownSprite;
-}
+	if(trig.gameObject.name == "water") {
+		onWater = false;
+		if(umbrellaUp){
+			gameObject.GetComponent(SpriteRenderer).sprite = umbrUpSprite;
+		}
+		else { //getting respawned out of water, umbrella still needs to be down
+			gameObject.GetComponent(SpriteRenderer).sprite = umbrDownSprite;
+		}
 
-}
+	}
 
 }
 
@@ -96,26 +96,26 @@ function Update () {
 		}
 	}
 	if (Input.GetKeyDown(KeyCode.D)) { //getkeydown
-	//make umbrella go down
-	if(umbrellaUp){
-		 gameObject.GetComponent(SpriteRenderer).sprite = umbrDownSprite;
-		 rigidbody2D.gravityScale = 8;
-		 rigidbody2D.drag = 0;
-	} else {
-	 gameObject.GetComponent(SpriteRenderer).sprite = umbrUpSprite;
-	 rigidbody2D.gravityScale = 2;
-	 rigidbody2D.drag = 5;
-	}
-	
+		//make umbrella go down
+		if(umbrellaUp){
+			 gameObject.GetComponent(SpriteRenderer).sprite = umbrDownSprite;
+			 rigidbody2D.gravityScale = 8;
+			 rigidbody2D.drag = 0;
+		} else {
+			gameObject.GetComponent(SpriteRenderer).sprite = umbrUpSprite;
+			rigidbody2D.gravityScale = 2;
+			rigidbody2D.drag = 5;
+		}
+		
 		umbrellaUp = !umbrellaUp; //should enable features only available when umbrella is down
 		//spriteRnd = renderer as SpriteRenderer;
-	//	GetComponent(SpriteRenderer).sprite = Resources.Load("Assets/Sprite/_Character/unicornpusheen.png", typeof(Sprite));
+		//GetComponent(SpriteRenderer).sprite = Resources.Load("Assets/Sprite/_Character/unicornpusheen.png", typeof(Sprite));
 
 	}
-	if(onWater) {
-	gameObject.GetComponent(SpriteRenderer).sprite = onWaterSprite;
-	}
-	
+//	if(onWater) {
+//		gameObject.GetComponent(SpriteRenderer).sprite = onWaterSprite;
+//	}
+
 	
 
 }
