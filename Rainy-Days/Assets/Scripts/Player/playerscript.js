@@ -15,6 +15,7 @@ var onWaterSprite : Sprite;
 var sunbeam : Sprite;
 var sunbeamCounter : int = 0;
 var numSunbeams : int = 2;
+var respawnPoints : GameObject[];
 
 function Start () {
 
@@ -48,9 +49,11 @@ function OnTriggerEnter2D(trig: Collider2D) {
 			gameObject.GetComponent(SpriteRenderer).sprite = onWaterSprite;
 		} else {
 			//respawn
-			//**now this is hardcoded to a position right outside the water since there is just one water spot
-			//**this could be changed
-			transform.position = Vector3(4, -4.9, 0);
+
+			if(respawnPoints.Length > 0) {
+				Respawn();
+				}
+			//transform.position = Vector3(4, -4.9, 0);
 		}
 	}
 	
@@ -131,10 +134,26 @@ function Update () {
 		}
 
 	}
+	
 //	if(onWater) {
 //		gameObject.GetComponent(SpriteRenderer).sprite = onWaterSprite;
 //	}
 
-	
+
 
 }
+
+	function Respawn() { //will go thru array of all of the current levels respawn points and will put player at closest respawning point
+	
+		var minPos : Vector3 = respawnPoints[0].transform.position;
+		for(var i : int = 1; i < respawnPoints.Length; i++) {
+			if(((respawnPoints[i].transform.position.x - this.gameObject.transform.position.x) - (minPos.x - this.gameObject.transform.position.x)) < 1) {
+			minPos = respawnPoints[i].transform.position;
+			}
+		
+		}
+		
+		this.gameObject.transform.position = minPos;
+		
+	
+	}
