@@ -7,11 +7,16 @@ var umbrellaUp : boolean = true; //default will be to have the umbrella be up
 var grounded : boolean = false;
 var onWater : boolean = false; //NEED COLLISION, A METHOD TO MAKE THIS TRUE IF PERSON ENCOUNTERS WATER
 var inUpdraft : boolean = false;
+var isPoking : boolean = false;
 //var spriteRnd : SpriteRenderer;
 //var spriteRndUmbr : SpriteRenderer;
 var umbrDownSprite : Sprite;
 var umbrUpSprite : Sprite;
 var onWaterSprite : Sprite;
+var pokeUpSprite : Sprite;
+var pokeFwdSprite : Sprite;
+
+
 var sunbeam : Sprite;
 var sunbeamCounter : int = 0;
 var numSunbeams : int = 2;
@@ -64,6 +69,11 @@ function OnTriggerEnter2D(trig: Collider2D) {
 	
 	else if (trig.gameObject.name == "updraft") {
 		inUpdraft = true;
+	}
+	
+	else if (isPoking && trig.gameObject.name == "eventSwitch") {
+	//do what needs to be done in event
+	Destroy(trig.gameObject);
 	}
 
 }
@@ -121,6 +131,7 @@ function Update () {
 	}
 	if (Input.GetKeyDown(KeyCode.D)) { //getkeydown
 		//make umbrella go down
+		isPoking = false;
 		if (!onWater) {
 			if(umbrellaUp){
 				gameObject.GetComponent(SpriteRenderer).sprite = umbrDownSprite;
@@ -135,6 +146,25 @@ function Update () {
 
 	}
 	
+	if (Input.GetKeyDown(KeyCode.W)) {
+		if(!umbrellaUp) {
+			//POKE UP
+			isPoking = true;
+			gameObject.GetComponent(SpriteRenderer).sprite = pokeUpSprite;
+		}	
+	
+	}
+	
+	if (Input.GetKeyDown(KeyCode.S)) {
+		if(!umbrellaUp) {
+			//POKE FORWARD 
+			isPoking = true;
+			gameObject.GetComponent(SpriteRenderer).sprite = pokeFwdSprite;
+		}	
+	
+	
+	}
+	
 //	if(onWater) {
 //		gameObject.GetComponent(SpriteRenderer).sprite = onWaterSprite;
 //	}
@@ -144,7 +174,7 @@ function Update () {
 }
 
 	function Respawn() { //will go thru array of all of the current levels respawn points and will put player at closest respawning point
-	
+	isPoking = false;
 		var minPos : Vector3 = respawnPoints[0].transform.position;
 		for(var i : int = 1; i < respawnPoints.Length; i++) {
 			if(((respawnPoints[i].transform.position.x - this.gameObject.transform.position.x) - (minPos.x - this.gameObject.transform.position.x)) < 1) {
