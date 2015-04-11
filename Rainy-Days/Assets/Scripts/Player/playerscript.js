@@ -7,15 +7,16 @@ var umbrellaUp : boolean = true; //default will be to have the umbrella be up
 var grounded : boolean = false;
 var onWater : boolean = false; //NEED COLLISION, A METHOD TO MAKE THIS TRUE IF PERSON ENCOUNTERS WATER
 var inUpdraft : boolean = false;
-//var spriteRnd : SpriteRenderer;
-//var spriteRndUmbr : SpriteRenderer;
+var inZipline : boolean = false;
+var onZipline : boolean = false;
+var sunbeamCounter : int = 0;
+var numSunbeams : int = 2;
+var respawnPoints : GameObject[];
+
 var umbrDownSprite : Sprite;
 var umbrUpSprite : Sprite;
 var onWaterSprite : Sprite;
 var sunbeam : Sprite;
-var sunbeamCounter : int = 0;
-var numSunbeams : int = 2;
-var respawnPoints : GameObject[];
 
 function Start () {
 
@@ -52,7 +53,7 @@ function OnTriggerEnter2D(trig: Collider2D) {
 
 			if(respawnPoints.Length > 0) {
 				Respawn();
-				}
+			}
 			//transform.position = Vector3(4, -4.9, 0);
 		}
 	}
@@ -64,6 +65,10 @@ function OnTriggerEnter2D(trig: Collider2D) {
 	
 	else if (trig.gameObject.name == "updraft") {
 		inUpdraft = true;
+	}
+	
+	else if (trig.gameObject.name == "zipline") {
+		inZipline = true;
 	}
 
 }
@@ -83,6 +88,10 @@ function OnTriggerExit2D(trig: Collider2D) {
 	else if (trig.gameObject.name == "updraft") {
 		inUpdraft = false;
 	}
+	
+	else if (trig.gameObject.name == "zipline") {
+		inZipline = false;
+	}
 
 }
 
@@ -98,6 +107,10 @@ function Update () {
 	} else {
 		rigidbody2D.gravityScale = 8;
 		rigidbody2D.drag = 0;
+	}
+	
+	if (onZipline) {
+		
 	}
 
 	if (Input.GetKey(KeyCode.UpArrow) && grounded && !onWater) {
@@ -121,7 +134,7 @@ function Update () {
 	}
 	if (Input.GetKeyDown(KeyCode.D)) { //getkeydown
 		//make umbrella go down
-		if (!onWater) {
+		if (!onWater && !onZipline) {
 			if(umbrellaUp){
 				gameObject.GetComponent(SpriteRenderer).sprite = umbrDownSprite;
 			} else {
@@ -129,31 +142,34 @@ function Update () {
 			}
 			
 			umbrellaUp = !umbrellaUp; //should enable features only available when umbrella is down
-			//spriteRnd = renderer as SpriteRenderer;
-			//GetComponent(SpriteRenderer).sprite = Resources.Load("Assets/Sprite/_Character/unicornpusheen.png", typeof(Sprite));
 		}
 
 	}
 	
-//	if(onWater) {
-//		gameObject.GetComponent(SpriteRenderer).sprite = onWaterSprite;
-//	}
-
-
+	if (Input.GetKeyDown(KeyCode.Z)) {
+		if (!onZipline) {
+			if (inZipline && !umbrellaUp) {
+				onZipline = true;
+				print("On zipline");
+			}
+		} else {
+			onZipline = false;
+			print("Off zipline");
+		}
+	}
 
 }
 
-	function Respawn() { //will go thru array of all of the current levels respawn points and will put player at closest respawning point
-	
-		var minPos : Vector3 = respawnPoints[0].transform.position;
-		for(var i : int = 1; i < respawnPoints.Length; i++) {
-			if(((respawnPoints[i].transform.position.x - this.gameObject.transform.position.x) - (minPos.x - this.gameObject.transform.position.x)) < 1) {
-			minPos = respawnPoints[i].transform.position;
-			}
-		
+function Respawn() { //will go thru array of all of the current levels respawn points and will put player at closest respawning point
+
+	var minPos : Vector3 = respawnPoints[0].transform.position;
+	for(var i : int = 1; i < respawnPoints.Length; i++) {
+		if(((respawnPoints[i].transform.position.x - this.gameObject.transform.position.x) - (minPos.x - this.gameObject.transform.position.x)) < 1) {
+		minPos = respawnPoints[i].transform.position;
 		}
-		
-		this.gameObject.transform.position = minPos;
-		
 	
 	}
+	
+	this.gameObject.transform.position = minPos;
+	
+}
