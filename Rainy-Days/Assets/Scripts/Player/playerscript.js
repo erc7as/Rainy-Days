@@ -3,12 +3,15 @@
 var speed : int = 10;
 var jumpspeed : int = 20;
 var direction : boolean = true; //facing left is true
+
 var umbrellaUp : boolean = true; //default will be to have the umbrella be up
 var grounded : boolean = false;
 var onWater : boolean = false; //NEED COLLISION, A METHOD TO MAKE THIS TRUE IF PERSON ENCOUNTERS WATER
 var inUpdraft : boolean = false;
 var inZipline : boolean = false;
 var onZipline : boolean = false;
+var isPoking : boolean = false;
+
 var sunbeamCounter : int = 0;
 var numSunbeams : int = 2;
 var respawnPoints : GameObject[];
@@ -16,6 +19,9 @@ var respawnPoints : GameObject[];
 var umbrDownSprite : Sprite;
 var umbrUpSprite : Sprite;
 var onWaterSprite : Sprite;
+var pokeUpSprite : Sprite;
+var pokeFwdSprite : Sprite;
+
 var sunbeam : Sprite;
 
 function Start () {
@@ -69,6 +75,11 @@ function OnTriggerEnter2D(trig: Collider2D) {
 	
 	else if (trig.gameObject.name == "zipline") {
 		inZipline = true;
+	}
+
+	else if (isPoking && trig.gameObject.name == "eventSwitch") {
+		//do what needs to be done in event
+		Destroy(trig.gameObject);
 	}
 
 }
@@ -134,6 +145,7 @@ function Update () {
 	}
 	if (Input.GetKeyDown(KeyCode.D)) { //getkeydown
 		//make umbrella go down
+		isPoking = false;
 		if (!onWater && !onZipline) {
 			if(umbrellaUp){
 				gameObject.GetComponent(SpriteRenderer).sprite = umbrDownSprite;
@@ -144,6 +156,25 @@ function Update () {
 			umbrellaUp = !umbrellaUp; //should enable features only available when umbrella is down
 		}
 
+	}
+	
+	if (Input.GetKeyDown(KeyCode.W)) {
+		if(!umbrellaUp) {
+			//POKE UP
+			isPoking = true;
+			gameObject.GetComponent(SpriteRenderer).sprite = pokeUpSprite;
+		}	
+	
+	}
+	
+	if (Input.GetKeyDown(KeyCode.S)) {
+		if(!umbrellaUp) {
+			//POKE FORWARD 
+			isPoking = true;
+			gameObject.GetComponent(SpriteRenderer).sprite = pokeFwdSprite;
+		}	
+	
+	
 	}
 	
 	if (Input.GetKeyDown(KeyCode.Z)) {
@@ -161,15 +192,13 @@ function Update () {
 }
 
 function Respawn() { //will go thru array of all of the current levels respawn points and will put player at closest respawning point
-
+	isPoking = false;
 	var minPos : Vector3 = respawnPoints[0].transform.position;
 	for(var i : int = 1; i < respawnPoints.Length; i++) {
 		if(((respawnPoints[i].transform.position.x - this.gameObject.transform.position.x) - (minPos.x - this.gameObject.transform.position.x)) < 1) {
-		minPos = respawnPoints[i].transform.position;
+			minPos = respawnPoints[i].transform.position;
 		}
-	
 	}
 	
 	this.gameObject.transform.position = minPos;
-	
 }
