@@ -83,6 +83,10 @@ function OnTriggerEnter2D(trig: Collider2D) {
 		//do what needs to be done in event
 		Destroy(trig.gameObject);
 	}
+	
+	else if (trig.gameObject.name == "nimboid") {
+		Respawn();
+	}
 
 }
 
