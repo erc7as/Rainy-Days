@@ -31,10 +31,10 @@ function Start () {
 }
 
 function OnCollisionEnter2D(coll: Collision2D) {
-	if (coll.contacts[0].normal.y > 0) {
-    	grounded = true;
-//    	print("Ground collision");
-	}
+//	if (coll.contacts[0].normal.y > 0) {
+//    	grounded = true;
+////    	print("Ground collision");
+//	}
 
 	if (coll.gameObject.name == "blockage" && sunbeamCounter == numSunbeams) {
 		Destroy(coll.gameObject);
@@ -43,11 +43,16 @@ function OnCollisionEnter2D(coll: Collision2D) {
 //	print(sunbeamCounter);
 }
 
-function OnCollisionExit2D(coll: Collision2D) {
-//	print("Collision exit: " + coll.gameObject.name);
+//function OnCollisionExit2D(coll: Collision2D) {
+//	if (coll.contacts[0].normal.y > 0) {
+//    	grounded = false;
+////    	print("Ground collision exit");
+//	}
+//}
+
+function OnCollisionStay2D(coll: Collision2D) {
 	if (coll.contacts[0].normal.y > 0) {
-    	grounded = false;
-//    	print("Ground collision exit");
+    	grounded = true;
 	}
 }
 
@@ -207,7 +212,8 @@ function Update () {
 //			print("Off zipline");
 		}
 	}
-
+	
+	grounded = false;
 }
 
 function Respawn() { //will go thru array of all of the current levels respawn points and will put player at closest respawning point
