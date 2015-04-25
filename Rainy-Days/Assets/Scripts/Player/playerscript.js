@@ -35,7 +35,7 @@ function OnCollisionEnter2D(coll: Collision2D) {
     	grounded = true;
 //    	print("Ground collision");
 	}
-	
+
 	if (coll.gameObject.name == "blockage" && sunbeamCounter == numSunbeams) {
 		Destroy(coll.gameObject);
 		grounded = false;
@@ -52,7 +52,7 @@ function OnCollisionExit2D(coll: Collision2D) {
 }
 
 function OnTriggerEnter2D(trig: Collider2D) {
-	if(trig.gameObject.name == "water") {
+	if(trig.name == "water") {
 		if (umbrellaUp) {
 			onWater = true;
 			gameObject.GetComponent(SpriteRenderer).sprite = onWaterSprite;
@@ -65,33 +65,33 @@ function OnTriggerEnter2D(trig: Collider2D) {
 		}
 	}
 	
-	else if (trig.gameObject.name == "sunbeam") {
+	else if (trig.name == "sunbeam") {
 		Destroy(trig.gameObject);
 		sunbeamCounter++;
 	}
 	
-	else if (trig.gameObject.name == "updraft") {
+	else if (trig.name == "updraft") {
 		inUpdraft = true;
 	}
-	
-	else if (trig.gameObject.name == "zipline") {
-		inZipline = true;
-		zipline = trig.gameObject;
-	}
 
-	else if (isPoking && trig.gameObject.name == "eventSwitch") {
+//	else if (trig.name == "zipline") {
+//		inZipline = true;
+//		zipline = trig.gameObject;
+//	}
+
+	else if (isPoking && trig.name == "eventSwitch") {
 		//do what needs to be done in event
 		Destroy(trig.gameObject);
 	}
 	
-	else if (trig.gameObject.name == "nimboid") {
+	else if (trig.name == "nimboid") {
 		Respawn();
 	}
 
 }
 
 function OnTriggerExit2D(trig: Collider2D) {
-	if(trig.gameObject.name == "water") {
+	if(trig.name == "water") {
 		onWater = false;
 		if(umbrellaUp){
 			gameObject.GetComponent(SpriteRenderer).sprite = umbrUpSprite;
@@ -102,15 +102,15 @@ function OnTriggerExit2D(trig: Collider2D) {
 
 	}
 
-	else if (trig.gameObject.name == "updraft") {
+	else if (trig.name == "updraft") {
 		inUpdraft = false;
 	}
 	
-	else if (trig.gameObject.name == "zipline") {
-		inZipline = false;
-		onZipline = false;
-		zipline = null;
-	}
+//	else if (trig.name == "zipline") {
+//		inZipline = false;
+//		onZipline = false;
+//		zipline = null;
+//	}
 
 }
 
