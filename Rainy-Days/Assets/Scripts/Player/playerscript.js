@@ -26,6 +26,9 @@ var pokeFwdSprite : Sprite;
 
 var sunbeam : Sprite;
 var collectSound : AudioClip;
+var umbOpened : AudioClip;
+var umbClosed: AudioClip;
+var splash : AudioClip;
 
 function Start () {
 
@@ -59,6 +62,7 @@ function OnCollisionStay2D(coll: Collision2D) {
 
 function OnTriggerEnter2D(trig: Collider2D) {
 	if(trig.name == "water") {
+	AudioSource.PlayClipAtPoint(splash, transform.position);
 		if (umbrellaUp) {
 			onWater = true;
 			gameObject.GetComponent(SpriteRenderer).sprite = onWaterSprite;
@@ -170,8 +174,10 @@ function Update () {
 		isPoking = false;
 		if (!onWater && !onZipline) {
 			if(umbrellaUp){
+				AudioSource.PlayClipAtPoint(umbClosed, transform.position);
 				gameObject.GetComponent(SpriteRenderer).sprite = umbrDownSprite;
 			} else {
+				AudioSource.PlayClipAtPoint(umbOpened, transform.position);
 				gameObject.GetComponent(SpriteRenderer).sprite = umbrUpSprite;
 			}
 			
