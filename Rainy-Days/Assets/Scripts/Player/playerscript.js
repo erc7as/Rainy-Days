@@ -25,6 +25,7 @@ var pokeUpSprite : Sprite;
 var pokeFwdSprite : Sprite;
 
 var sunbeam : Sprite;
+var collectSound : AudioClip;
 
 function Start () {
 
@@ -66,6 +67,7 @@ function OnTriggerEnter2D(trig: Collider2D) {
 	}
 	
 	else if (trig.gameObject.name == "sunbeam") {
+		AudioSource.PlayClipAtPoint(collectSound, transform.position);
 		Destroy(trig.gameObject);
 		sunbeamCounter++;
 	}
