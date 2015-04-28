@@ -2,8 +2,9 @@
 
 var speed : int = 10;
 var jumpspeed : int = 20;
-var direction : boolean = true; //facing left is true
+var zipspeed : int = 10;
 
+var direction : boolean = true; //facing left is true
 var umbrellaUp : boolean = true; //default will be to have the umbrella be up
 var grounded : boolean = false;
 var onWater : boolean = false; //NEED COLLISION, A METHOD TO MAKE THIS TRUE IF PERSON ENCOUNTERS WATER
@@ -15,6 +16,7 @@ var isPoking : boolean = false;
 var sunbeamCounter : int = 0;
 var numSunbeams : int = 2;
 var respawnPoints : GameObject[];
+var zipline : GameObject = null;
 
 var umbrDownSprite : Sprite;
 var umbrUpSprite : Sprite;
@@ -23,17 +25,21 @@ var pokeUpSprite : Sprite;
 var pokeFwdSprite : Sprite;
 
 var sunbeam : Sprite;
+var collectSound : AudioClip;
+
+var floodWater : GameObject;
+
 
 function Start () {
 
 }
 
 function OnCollisionEnter2D(coll: Collision2D) {
-	if (coll.contacts[0].normal.y > 0) {
-    	grounded = true;
-//    	print("Ground collision");
-	}
-	
+//	if (coll.contacts[0].normal.y > 0) {
+//    	grounded = true;
+////    	print("Ground collision");
+//	}
+
 	if (coll.gameObject.name == "blockage" && sunbeamCounter == numSunbeams) {
 		Destroy(coll.gameObject);
 		grounded = false;
@@ -41,16 +47,21 @@ function OnCollisionEnter2D(coll: Collision2D) {
 //	print(sunbeamCounter);
 }
 
-function OnCollisionExit2D(coll: Collision2D) {
-//	print("Collision exit: " + coll.gameObject.name);
+//function OnCollisionExit2D(coll: Collision2D) {
+//	if (coll.contacts[0].normal.y > 0) {
+//    	grounded = false;
+////    	print("Ground collision exit");
+//	}
+//}
+
+function OnCollisionStay2D(coll: Collision2D) {
 	if (coll.contacts[0].normal.y > 0) {
-    	grounded = false;
-//    	print("Ground collision exit");
+    	grounded = true;
 	}
 }
 
 function OnTriggerEnter2D(trig: Collider2D) {
-	if(trig.gameObject.name == "water") {
+	if(trig.name == "water") {
 		if (umbrellaUp) {
 			onWater = true;
 			gameObject.GetComponent(SpriteRenderer).sprite = onWaterSprite;
@@ -60,32 +71,41 @@ function OnTriggerEnter2D(trig: Collider2D) {
 			if(respawnPoints.Length > 0) {
 				Respawn();
 			}
-			//transform.position = Vector3(4, -4.9, 0);
 		}
 	}
 	
-	else if (trig.gameObject.name == "sunbeam") {
+	else if (trig.name == "sunbeam") {
+		AudioSource.PlayClipAtPoint(collectSound, transform.position);
 		Destroy(trig.gameObject);
 		sunbeamCounter++;
 	}
 	
-	else if (trig.gameObject.name == "updraft") {
+	else if (trig.name == "updraft") {
 		inUpdraft = true;
 	}
-	
-	else if (trig.gameObject.name == "zipline") {
-		inZipline = true;
-	}
 
-	else if (isPoking && trig.gameObject.name == "eventSwitch") {
+//	else if (trig.name == "zipline") {
+//		inZipline = true;
+//		zipline = trig.gameObject;
+//	}
+
+	else if (isPoking && trig.name == "eventSwitch1") {
 		//do what needs to be done in event
-		Destroy(trig.gameObject);
+		//floodscript.flood();
+		// floodScript.GetComponent(floodscript).flood();
+	//	floodScript.flood();
+	Destroy(trig.gameObject);
+	floodWater.SetActive(true);
+	}
+	
+	else if (trig.name == "nimboid") {
+		Respawn();
 	}
 
 }
 
 function OnTriggerExit2D(trig: Collider2D) {
-	if(trig.gameObject.name == "water") {
+	if(trig.name == "water") {
 		onWater = false;
 		if(umbrellaUp){
 			gameObject.GetComponent(SpriteRenderer).sprite = umbrUpSprite;
@@ -96,13 +116,15 @@ function OnTriggerExit2D(trig: Collider2D) {
 
 	}
 
-	else if (trig.gameObject.name == "updraft") {
+	else if (trig.name == "updraft") {
 		inUpdraft = false;
 	}
 	
-	else if (trig.gameObject.name == "zipline") {
-		inZipline = false;
-	}
+//	else if (trig.name == "zipline") {
+//		inZipline = false;
+//		onZipline = false;
+//		zipline = null;
+//	}
 
 }
 
@@ -119,15 +141,22 @@ function Update () {
 		rigidbody2D.gravityScale = 8;
 		rigidbody2D.drag = 0;
 	}
-	
+
 	if (onZipline) {
-		
+		rigidbody2D.gravityScale = 0;
+		rigidbody2D.velocity.y = 0;
+//		rigidbody2D.velocity.x = 0;
+		var angle : float = Mathf.Deg2Rad * zipline.transform.rotation.eulerAngles.z;
+		var dir : Vector2 = Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+//		print(angle);
+//		print(dir);
+		transform.Translate(dir * zipspeed * Time.deltaTime);
 	}
 
-	if (Input.GetKey(KeyCode.UpArrow) && grounded && !onWater) {
+	if (Input.GetKey(KeyCode.UpArrow) && grounded && !onWater && !onZipline) {
 		rigidbody2D.velocity.y = jumpspeed;
 	}
-	if (Input.GetKey(KeyCode.LeftArrow)) {
+	if (Input.GetKey(KeyCode.LeftArrow) && !onZipline) {
 //		rigidbody2D.velocity.x = -speed;
 		transform.Translate(Vector2(-1,0) * Time.deltaTime*speed);
 		if(!direction) {
@@ -135,7 +164,7 @@ function Update () {
 		direction = true;
 		}
 	}
-	if (Input.GetKey(KeyCode.RightArrow)) {
+	if (Input.GetKey(KeyCode.RightArrow) && !onZipline) {
 //		rigidbody2D.velocity.x = speed;
 		transform.Translate(Vector2(1,0) * Time.deltaTime*speed);
 		if(direction) {
@@ -155,40 +184,45 @@ function Update () {
 			
 			umbrellaUp = !umbrellaUp; //should enable features only available when umbrella is down
 		}
-
 	}
-	
+
 	if (Input.GetKeyDown(KeyCode.W)) {
 		if(!umbrellaUp) {
 			//POKE UP
 			isPoking = true;
 			gameObject.GetComponent(SpriteRenderer).sprite = pokeUpSprite;
-		}	
-	
+		}
 	}
-	
+
 	if (Input.GetKeyDown(KeyCode.S)) {
 		if(!umbrellaUp) {
 			//POKE FORWARD 
 			isPoking = true;
 			gameObject.GetComponent(SpriteRenderer).sprite = pokeFwdSprite;
-		}	
-	
-	
+		}
 	}
-	
+
+	if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S)) {
+		if(isPoking) {
+			//UNPOKE
+			isPoking = false;
+			gameObject.GetComponent(SpriteRenderer).sprite = umbrDownSprite;
+		}
+	}
+
 	if (Input.GetKeyDown(KeyCode.Z)) {
 		if (!onZipline) {
 			if (inZipline && !umbrellaUp) {
 				onZipline = true;
-				print("On zipline");
+//				print("On zipline");
 			}
 		} else {
 			onZipline = false;
-			print("Off zipline");
+//			print("Off zipline");
 		}
 	}
-
+	
+	grounded = false;
 }
 
 function Respawn() { //will go thru array of all of the current levels respawn points and will put player at closest respawning point
