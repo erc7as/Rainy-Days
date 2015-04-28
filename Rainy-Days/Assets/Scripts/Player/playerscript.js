@@ -25,6 +25,7 @@ var pokeUpSprite : Sprite;
 var pokeFwdSprite : Sprite;
 
 var sunbeam : Sprite;
+var collectSound : AudioClip;
 
 var floodWater : GameObject;
 
@@ -74,6 +75,7 @@ function OnTriggerEnter2D(trig: Collider2D) {
 	}
 	
 	else if (trig.name == "sunbeam") {
+		AudioSource.PlayClipAtPoint(collectSound, transform.position);
 		Destroy(trig.gameObject);
 		sunbeamCounter++;
 	}
