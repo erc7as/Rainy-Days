@@ -30,6 +30,9 @@ var umbOpened : AudioClip;
 var umbClosed: AudioClip;
 var splash : AudioClip;
 
+var floodWater : GameObject;
+
+
 function Start () {
 
 }
@@ -90,9 +93,13 @@ function OnTriggerEnter2D(trig: Collider2D) {
 //		zipline = trig.gameObject;
 //	}
 
-	else if (isPoking && trig.name == "eventSwitch") {
+	else if (isPoking && trig.name == "eventSwitch1") {
 		//do what needs to be done in event
-		Destroy(trig.gameObject);
+		//floodscript.flood();
+		// floodScript.GetComponent(floodscript).flood();
+	//	floodScript.flood();
+	Destroy(trig.gameObject);
+	floodWater.SetActive(true);
 	}
 	
 	else if (trig.name == "nimboid") {
