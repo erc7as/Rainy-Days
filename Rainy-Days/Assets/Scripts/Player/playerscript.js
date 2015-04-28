@@ -32,11 +32,11 @@ function Start () {
 }
 
 function OnCollisionEnter2D(coll: Collision2D) {
-	if (coll.contacts[0].normal.y > 0) {
-    	grounded = true;
-//    	print("Ground collision");
-	}
-	
+//	if (coll.contacts[0].normal.y > 0) {
+//    	grounded = true;
+////    	print("Ground collision");
+//	}
+
 	if (coll.gameObject.name == "blockage" && sunbeamCounter == numSunbeams) {
 		Destroy(coll.gameObject);
 		grounded = false;
@@ -44,16 +44,21 @@ function OnCollisionEnter2D(coll: Collision2D) {
 //	print(sunbeamCounter);
 }
 
-function OnCollisionExit2D(coll: Collision2D) {
-//	print("Collision exit: " + coll.gameObject.name);
+//function OnCollisionExit2D(coll: Collision2D) {
+//	if (coll.contacts[0].normal.y > 0) {
+//    	grounded = false;
+////    	print("Ground collision exit");
+//	}
+//}
+
+function OnCollisionStay2D(coll: Collision2D) {
 	if (coll.contacts[0].normal.y > 0) {
-    	grounded = false;
-//    	print("Ground collision exit");
+    	grounded = true;
 	}
 }
 
 function OnTriggerEnter2D(trig: Collider2D) {
-	if(trig.gameObject.name == "water") {
+	if(trig.name == "water") {
 		if (umbrellaUp) {
 			onWater = true;
 			gameObject.GetComponent(SpriteRenderer).sprite = onWaterSprite;
@@ -66,34 +71,34 @@ function OnTriggerEnter2D(trig: Collider2D) {
 		}
 	}
 	
-	else if (trig.gameObject.name == "sunbeam") {
+	else if (trig.name == "sunbeam") {
 		AudioSource.PlayClipAtPoint(collectSound, transform.position);
 		Destroy(trig.gameObject);
 		sunbeamCounter++;
 	}
 	
-	else if (trig.gameObject.name == "updraft") {
+	else if (trig.name == "updraft") {
 		inUpdraft = true;
 	}
-	
-	else if (trig.gameObject.name == "zipline") {
-		inZipline = true;
-		zipline = trig.gameObject;
-	}
 
-	else if (isPoking && trig.gameObject.name == "eventSwitch") {
+//	else if (trig.name == "zipline") {
+//		inZipline = true;
+//		zipline = trig.gameObject;
+//	}
+
+	else if (isPoking && trig.name == "eventSwitch") {
 		//do what needs to be done in event
 		Destroy(trig.gameObject);
 	}
 	
-	else if (trig.gameObject.name == "nimboid") {
+	else if (trig.name == "nimboid") {
 		Respawn();
 	}
 
 }
 
 function OnTriggerExit2D(trig: Collider2D) {
-	if(trig.gameObject.name == "water") {
+	if(trig.name == "water") {
 		onWater = false;
 		if(umbrellaUp){
 			gameObject.GetComponent(SpriteRenderer).sprite = umbrUpSprite;
@@ -104,15 +109,15 @@ function OnTriggerExit2D(trig: Collider2D) {
 
 	}
 
-	else if (trig.gameObject.name == "updraft") {
+	else if (trig.name == "updraft") {
 		inUpdraft = false;
 	}
 	
-	else if (trig.gameObject.name == "zipline") {
-		inZipline = false;
-		onZipline = false;
-		zipline = null;
-	}
+//	else if (trig.name == "zipline") {
+//		inZipline = false;
+//		onZipline = false;
+//		zipline = null;
+//	}
 
 }
 
@@ -209,7 +214,8 @@ function Update () {
 //			print("Off zipline");
 		}
 	}
-
+	
+	grounded = false;
 }
 
 function Respawn() { //will go thru array of all of the current levels respawn points and will put player at closest respawning point
