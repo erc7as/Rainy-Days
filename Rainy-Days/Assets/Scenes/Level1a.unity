@@ -263,8 +263,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 106687384}
   - 212: {fileID: 106687383}
+  - 61: {fileID: 106687385}
   m_Layer: 0
-  m_Name: water
+  m_Name: puddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -304,6 +305,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!61 &106687385
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 106687382}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 27.3200016, y: 1.80916166}
+  m_Center: {x: 0, y: -1.61541378}
 --- !u!1 &140906787
 GameObject:
   m_ObjectHideFlags: 0
