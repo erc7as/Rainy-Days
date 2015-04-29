@@ -82,7 +82,7 @@ function OnTriggerEnter2D(trig: Collider2D) {
 			}
 		}
 		}
-	else if(trig.name == "puddle") {
+	else if(trig.name == "level") {
 	AudioSource.PlayClipAtPoint(splash, transform.position);
 		Application.LoadLevel("Level1b");
 	}

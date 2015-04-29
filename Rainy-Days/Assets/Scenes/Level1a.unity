@@ -265,7 +265,7 @@ GameObject:
   - 212: {fileID: 106687383}
   - 61: {fileID: 106687385}
   m_Layer: 0
-  m_Name: puddle
+  m_Name: level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1151,6 +1151,7 @@ MonoBehaviour:
   inZipline: 0
   onZipline: 0
   isPoking: 0
+  isShielding: 0
   sunbeamCounter: 0
   numSunbeams: 2
   respawnPoints:
@@ -1162,6 +1163,7 @@ MonoBehaviour:
   onWaterSprite: {fileID: 21300000, guid: f4e3379b861a5d045b0266a3cf1b10c2, type: 3}
   pokeUpSprite: {fileID: 21300000, guid: 8829c855ab5eb404da8548464a6ff607, type: 3}
   pokeFwdSprite: {fileID: 21300000, guid: a67b9bdc02205594e982e64099d1d425, type: 3}
+  shieldSprite: {fileID: 0}
   sunbeam: {fileID: 21300000, guid: 82427ca6d240afb4081653939cf85eb3, type: 3}
   collectSound: {fileID: 8300000, guid: 9c6cb5cfefa4ac341bf142599405a11f, type: 3}
   umbOpened: {fileID: 8300000, guid: 9c7f95fdebaca494784129f4ea0d4e9c, type: 3}
@@ -1187,9 +1189,9 @@ AudioSource:
   m_GameObject: {fileID: 1432631270}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 3da50223814ade94988d3ca83e8348d7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 895f697f46f3fb34b92dff27a94b99b8, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: .400000006
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1247,7 +1249,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: f3788eb4b29027546bfcdfb214ed4a04, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: .400000006
   m_Pitch: 1
   Loop: 1
   Mute: 0
