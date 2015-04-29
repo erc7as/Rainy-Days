@@ -62,6 +62,9 @@ function OnCollisionEnter2D(coll: Collision2D) {
 function OnCollisionStay2D(coll: Collision2D) {
 	if (coll.contacts[0].normal.y > 0) {
     	grounded = true;
+    	if (coll.gameObject.name == "moving platform") {
+			transform.Translate(Vector2(coll.gameObject.transform.position.x-transform.position.x,0) * Time.deltaTime * 6);
+		}
 	}
 }
 
