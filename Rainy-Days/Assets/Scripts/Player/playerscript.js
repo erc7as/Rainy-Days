@@ -16,7 +16,7 @@ var isShielding : boolean = false;
 var isHiding : boolean = false;
 
 var sunbeamCounter : int = 0;
-var numSunbeams : int = 2;
+var numSunbeams : int = 4;
 var respawnPoints : GameObject[];
 var zipline : GameObject = null;
 
@@ -33,10 +33,12 @@ var collectSound : AudioClip;
 var umbOpened : AudioClip;
 var umbClosed: AudioClip;
 var splash : AudioClip;
+var nimboid : AudioClip;
 
 var floodWater : GameObject;
 var floodGround : GameObject;
-
+var floodCloud : GameObject;
+var floodUpdraft : GameObject;
 
 
 function Start () {
@@ -87,8 +89,12 @@ function OnTriggerEnter2D(trig: Collider2D) {
 		}
 		}
 	else if(trig.name == "level") {
-	AudioSource.PlayClipAtPoint(splash, transform.position);
+		AudioSource.PlayClipAtPoint(splash, transform.position);
 		Application.LoadLevel("Level1b");
+	}
+	
+	else if(trig.name == "new level") {
+		Application.LoadLevel("Level2");
 	}
 	
 	else if (trig.name == "sunbeam") {
@@ -107,20 +113,23 @@ function OnTriggerEnter2D(trig: Collider2D) {
 //	}
 
 	else if (isPoking && trig.name == "eventSwitch1") {
-		//do what needs to be done in event
-		//floodscript.flood();
-		// floodScript.GetComponent(floodscript).flood();
-	//	floodScript.flood();
-	floodWater.SetActive(true);
-	floodGround.SetActive(true);
-	Destroy(trig.gameObject);
+		floodWater.SetActive(true);
+		floodGround.SetActive(true);
+		Destroy(trig.gameObject);
+	}
+	
+	else if (isPoking && trig.name == "eventSwitch2") {
+		floodCloud.SetActive(true);
+		Destroy(trig.gameObject);
 	}
 	
 	else if (trig.name == "nimboid" && !isHiding) {
+		AudioSource.PlayClipAtPoint(nimboid, transform.position);
 		Respawn();
 	}
 
 	else if (trig.name == "puddle") {
+		AudioSource.PlayClipAtPoint(splash, transform.position);
 		this.gameObject.transform.position = GameObject.Find("puddle 1").transform.position;
 	}
 }
