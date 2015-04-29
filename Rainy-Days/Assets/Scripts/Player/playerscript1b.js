@@ -88,7 +88,7 @@ function OnTriggerEnter2D(trig: Collider2D) {
 	else if (trig.name == "updraft") {
 		inUpdraft = true;
 	}
-	else if (trig.name == "levelTrigger" && speechBubble.active == false) {
+	else if (trig.name == "levelTrigger" && speechBubble.activeSelf == false) {
 	Application.LoadLevel("Level1C");
 	}
 

@@ -189,7 +189,6 @@ function Update () {
 		//make umbrella go down
 		isPoking = false;
 		isShielding = false;
-		print("Not shielding");
 		if (!onWater && !onZipline) {
 			if(umbrellaUp){
 				AudioSource.PlayClipAtPoint(umbClosed, transform.position);
@@ -217,7 +216,6 @@ function Update () {
 	if (Input.GetKeyDown(KeyCode.S)) {
 		if (umbrellaUp) {
 			isShielding = true;
-			print("Shielding");
 			gameObject.GetComponent(SpriteRenderer).sprite = shieldSprite;
 		}
 		else {
@@ -235,7 +233,6 @@ function Update () {
 		}
 		else if (isShielding) {
 			isShielding = false;
-			print("Not shielding");
 			gameObject.GetComponent(SpriteRenderer).sprite = umbrUpSprite;
 		}
 	}
