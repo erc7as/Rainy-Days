@@ -76,6 +76,10 @@ function OnTriggerEnter2D(trig: Collider2D) {
 				Respawn();
 			}
 		}
+		}
+	else if(trig.name == "puddle") {
+	AudioSource.PlayClipAtPoint(splash, transform.position);
+		Application.LoadLevel("Level1b");
 	}
 	
 	else if (trig.name == "sunbeam") {
