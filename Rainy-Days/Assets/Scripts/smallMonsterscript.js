@@ -1,5 +1,5 @@
 ﻿#pragma strict
-var speed: int;
+var speed: double;
 var direction: boolean = true;
 var range: int;
 var rangecounter: int;
@@ -8,7 +8,7 @@ function Start () {
 
 }
 
-function Update () {
+function FixedUpdate () {
 
 if(rangecounter == 0 || rangecounter == range){
 	direction = !direction;
@@ -16,12 +16,12 @@ if(rangecounter == 0 || rangecounter == range){
 }
 
 if(direction){
-transform.Translate(Vector2(-1,0) * Time.deltaTime*speed);
+transform.Translate(Vector2(-1,0) * speed);
 		rangecounter -= 1;
 		}
 		
 if(!direction){				
-transform.Translate(Vector2(1,0) * Time.deltaTime*speed);
+transform.Translate(Vector2(1,0) * speed);
 		rangecounter += 1;
 		}
 }
