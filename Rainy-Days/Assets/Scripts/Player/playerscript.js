@@ -5,7 +5,7 @@ var jumpspeed : int = 20;
 var zipspeed : int = 10;
 
 var direction : boolean = true; //facing left is true
-var umbrellaUp : boolean = true; //default will be to have the umbrella be up
+var umbrellaUp : boolean = false; //default will be to have the umbrella be up
 var grounded : boolean = false;
 var onWater : boolean = false; //NEED COLLISION, A METHOD TO MAKE THIS TRUE IF PERSON ENCOUNTERS WATER
 var inUpdraft : boolean = false;
@@ -106,6 +106,9 @@ function OnTriggerEnter2D(trig: Collider2D) {
 		Respawn();
 	}
 
+	else if (trig.name == "puddle") {
+		this.gameObject.transform.position = GameObject.Find("puddle 1").transform.position;
+	}
 }
 
 function OnTriggerExit2D(trig: Collider2D) {
@@ -135,20 +138,20 @@ function OnTriggerExit2D(trig: Collider2D) {
 function Update () {
 	if (umbrellaUp) {
 		if (inUpdraft) {
-			rigidbody2D.gravityScale = -2;
-			rigidbody2D.drag = 2;
+			GetComponent.<Rigidbody2D>().gravityScale = -2;
+			GetComponent.<Rigidbody2D>().drag = 2;
 		} else {
-			rigidbody2D.gravityScale = 2;
-			rigidbody2D.drag = 5;
+			GetComponent.<Rigidbody2D>().gravityScale = 2;
+			GetComponent.<Rigidbody2D>().drag = 5;
 		}
 	} else {
-		rigidbody2D.gravityScale = 8;
-		rigidbody2D.drag = 0;
+		GetComponent.<Rigidbody2D>().gravityScale = 8;
+		GetComponent.<Rigidbody2D>().drag = 0;
 	}
 
 	if (onZipline) {
-		rigidbody2D.gravityScale = 0;
-		rigidbody2D.velocity.y = 0;
+		GetComponent.<Rigidbody2D>().gravityScale = 0;
+		GetComponent.<Rigidbody2D>().velocity.y = 0;
 //		rigidbody2D.velocity.x = 0;
 		var angle : float = Mathf.Deg2Rad * zipline.transform.rotation.eulerAngles.z;
 		var dir : Vector2 = Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
@@ -158,7 +161,7 @@ function Update () {
 	}
 
 	if (Input.GetKey(KeyCode.UpArrow) && grounded && !onWater && !onZipline) {
-		rigidbody2D.velocity.y = jumpspeed;
+		GetComponent.<Rigidbody2D>().velocity.y = jumpspeed;
 	}
 	if (Input.GetKey(KeyCode.LeftArrow) && !onZipline) {
 //		rigidbody2D.velocity.x = -speed;
