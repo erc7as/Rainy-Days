@@ -1,0 +1,28 @@
+Initialize engine version: 4.5.4f1 (e036f44c54c9)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics 4000 (ID=0x166)
+    Vendor:   Intel
+    VRAM:     64 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Student\Documents\Rainy-Days\Builds\ESE-4-29-2015_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Student\Documents\Rainy-Days\Builds\ESE-4-29-2015_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Student\Documents\Rainy-Days\Builds\ESE-4-29-2015_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\Student\Documents\Rainy-Days\Builds\ESE-4-29-2015_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+- Completed reload, in  0.206 seconds
+desktop: 1600x900 50Hz; virtual: 1600x900 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+UnloadTime: 0.606678 ms
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 512.
+Total: 1.112310 ms (FindLiveObjects: 0.041839 ms CreateObjectMapping: 0.016972 ms MarkObjects: 0.144860 ms  DeleteObjects: 0.020130 ms)
+
+UnloadTime: 1.350324 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 411.
+Total: 4.653703 ms (FindLiveObjects: 0.046576 ms CreateObjectMapping: 0.031577 ms MarkObjects: 0.214725 ms  DeleteObjects: 3.042866 ms)
+

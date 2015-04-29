@@ -14,6 +14,7 @@ var onZipline : boolean = false;
 var isPoking : boolean = false;
 var isShielding : boolean = false;
 var isHiding : boolean = false;
+var hitSwitch : boolean = false;
 
 var sunbeamCounter : int = 0;
 var numSunbeams : int = 4;
@@ -97,6 +98,10 @@ function OnTriggerEnter2D(trig: Collider2D) {
 		Application.LoadLevel("Level2");
 	}
 	
+	else if (trig.name == "end") {
+		Application.LoadLevel("EndGame");
+	}
+	
 	else if (trig.name == "sunbeam") {
 		AudioSource.PlayClipAtPoint(collectSound, transform.position);
 		Destroy(trig.gameObject);
@@ -120,6 +125,16 @@ function OnTriggerEnter2D(trig: Collider2D) {
 	
 	else if (isPoking && trig.name == "eventSwitch2") {
 		floodCloud.SetActive(true);
+		Destroy(trig.gameObject);
+	}
+	
+	else if (isPoking && !hitSwitch && trig.name == "eventSwitch3") {
+		hitSwitch = true;
+		Destroy(trig.gameObject);
+	}
+	
+	else if (isPoking && hitSwitch && trig.name == "eventSwitch3") {
+		floodUpdraft.SetActive(true);
 		Destroy(trig.gameObject);
 	}
 	
