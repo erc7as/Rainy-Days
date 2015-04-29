@@ -35,6 +35,7 @@ var umbClosed: AudioClip;
 var splash : AudioClip;
 
 var floodWater : GameObject;
+var floodGround : GameObject;
 
 
 
@@ -110,8 +111,9 @@ function OnTriggerEnter2D(trig: Collider2D) {
 		//floodscript.flood();
 		// floodScript.GetComponent(floodscript).flood();
 	//	floodScript.flood();
-	Destroy(trig.gameObject);
 	floodWater.SetActive(true);
+	floodGround.SetActive(true);
+	Destroy(trig.gameObject);
 	}
 	
 	else if (trig.name == "nimboid" && !isHiding) {
