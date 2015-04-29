@@ -717,6 +717,7 @@ MonoBehaviour:
   inZipline: 0
   onZipline: 0
   isPoking: 0
+  isShielding: 0
   sunbeamCounter: 0
   numSunbeams: 2
   respawnPoints:
@@ -728,7 +729,13 @@ MonoBehaviour:
   onWaterSprite: {fileID: 21300000, guid: f4e3379b861a5d045b0266a3cf1b10c2, type: 3}
   pokeUpSprite: {fileID: 21300000, guid: 8829c855ab5eb404da8548464a6ff607, type: 3}
   pokeFwdSprite: {fileID: 21300000, guid: a67b9bdc02205594e982e64099d1d425, type: 3}
+  shieldSprite: {fileID: 0}
   sunbeam: {fileID: 21300000, guid: 82427ca6d240afb4081653939cf85eb3, type: 3}
+  collectSound: {fileID: 0}
+  umbOpened: {fileID: 0}
+  umbClosed: {fileID: 0}
+  splash: {fileID: 0}
+  floodWater: {fileID: 0}
 --- !u!61 &1432631276
 BoxCollider2D:
   m_ObjectHideFlags: 0
