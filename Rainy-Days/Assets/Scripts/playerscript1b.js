@@ -30,10 +30,13 @@ var collectSound : AudioClip;
 var floodWater : GameObject;
 
 var speechBubble : GameObject;
+//var pause: boolean = false;
 
 
 function Start () {
-
+//speechBubble.SetActive(false);
+gameObject.GetComponent(SpriteRenderer).sprite = umbrDownSprite;
+umbrellaUp = false;
 }
 
 function OnCollisionEnter2D(coll: Collision2D) {
@@ -130,17 +133,18 @@ function OnTriggerExit2D(trig: Collider2D) {
 
 }
 
+
+
 function Update () {
 
 
-if(this.transform.position.y == 0) {
-	rigidbody2D.gravityScale = 0;
-	rigidbody2D.velocity.y = 0;
-	
-	speechBubble.SetActive(true);
-}
+//var pos : Vector3 = transform.position;
+/*if(this.transform.position.y == 0.0) {
+			rigidbody2D.gravityScale = 0;
+			rigidbody2D.velocity.y = 0;
+			pause = true;
 
-
+}*/
 
 
 
@@ -152,7 +156,7 @@ if(this.transform.position.y == 0) {
 			rigidbody2D.gravityScale = 2;
 			rigidbody2D.drag = 5;
 		}
-	} else {
+	} else{
 		rigidbody2D.gravityScale = 8;
 		rigidbody2D.drag = 0;
 	}
@@ -167,6 +171,7 @@ if(this.transform.position.y == 0) {
 //		print(dir);
 		transform.Translate(dir * zipspeed * Time.deltaTime);
 	}
+
 
 	if (Input.GetKey(KeyCode.UpArrow) && grounded && !onWater && !onZipline) {
 		rigidbody2D.velocity.y = jumpspeed;
@@ -189,7 +194,7 @@ if(this.transform.position.y == 0) {
 	}
 	if (Input.GetKeyDown(KeyCode.D)) { //getkeydown
 		//make umbrella go down
-		
+		speechBubble.SetActive(false);
 			rigidbody2D.gravityScale = 2;
 			rigidbody2D.drag = 5;
 			
