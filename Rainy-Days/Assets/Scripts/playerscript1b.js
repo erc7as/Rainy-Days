@@ -1,11 +1,11 @@
-#pragma strict
+﻿#pragma strict
 
 var speed : int = 10;
 var jumpspeed : int = 20;
 var zipspeed : int = 10;
 
 var direction : boolean = true; //facing left is true
-var umbrellaUp : boolean = false; //default will be to have the umbrella be up
+var umbrellaUp : boolean = true; //default will be to have the umbrella be up
 var grounded : boolean = false;
 var onWater : boolean = false; //NEED COLLISION, A METHOD TO MAKE THIS TRUE IF PERSON ENCOUNTERS WATER
 var inUpdraft : boolean = false;
@@ -26,15 +26,17 @@ var pokeFwdSprite : Sprite;
 
 var sunbeam : Sprite;
 var collectSound : AudioClip;
-var umbOpened : AudioClip;
-var umbClosed: AudioClip;
-var splash : AudioClip;
 
 var floodWater : GameObject;
 
+var speechBubble : GameObject;
+//var pause: boolean = false;
+
 
 function Start () {
-
+//speechBubble.SetActive(false);
+gameObject.GetComponent(SpriteRenderer).sprite = umbrDownSprite;
+umbrellaUp = false;
 }
 
 function OnCollisionEnter2D(coll: Collision2D) {
@@ -65,7 +67,6 @@ function OnCollisionStay2D(coll: Collision2D) {
 
 function OnTriggerEnter2D(trig: Collider2D) {
 	if(trig.name == "water") {
-	AudioSource.PlayClipAtPoint(splash, transform.position);
 		if (umbrellaUp) {
 			onWater = true;
 			gameObject.GetComponent(SpriteRenderer).sprite = onWaterSprite;
@@ -76,10 +77,6 @@ function OnTriggerEnter2D(trig: Collider2D) {
 				Respawn();
 			}
 		}
-		}
-	else if(trig.name == "puddle") {
-	AudioSource.PlayClipAtPoint(splash, transform.position);
-		Application.LoadLevel("Level1b");
 	}
 	
 	else if (trig.name == "sunbeam") {
@@ -110,9 +107,6 @@ function OnTriggerEnter2D(trig: Collider2D) {
 		Respawn();
 	}
 
-	else if (trig.name == "puddle") {
-		this.gameObject.transform.position = GameObject.Find("puddle 1").transform.position;
-	}
 }
 
 function OnTriggerExit2D(trig: Collider2D) {
@@ -139,23 +133,37 @@ function OnTriggerExit2D(trig: Collider2D) {
 
 }
 
+
+
 function Update () {
+
+
+//var pos : Vector3 = transform.position;
+/*if(this.transform.position.y == 0.0) {
+			rigidbody2D.gravityScale = 0;
+			rigidbody2D.velocity.y = 0;
+			pause = true;
+
+}*/
+
+
+
 	if (umbrellaUp) {
 		if (inUpdraft) {
-			GetComponent.<Rigidbody2D>().gravityScale = -2;
-			GetComponent.<Rigidbody2D>().drag = 2;
+			rigidbody2D.gravityScale = -2;
+			rigidbody2D.drag = 2;
 		} else {
-			GetComponent.<Rigidbody2D>().gravityScale = 2;
-			GetComponent.<Rigidbody2D>().drag = 5;
+			rigidbody2D.gravityScale = 2;
+			rigidbody2D.drag = 5;
 		}
-	} else {
-		GetComponent.<Rigidbody2D>().gravityScale = 8;
-		GetComponent.<Rigidbody2D>().drag = 0;
+	} else{
+		rigidbody2D.gravityScale = 8;
+		rigidbody2D.drag = 0;
 	}
 
 	if (onZipline) {
-		GetComponent.<Rigidbody2D>().gravityScale = 0;
-		GetComponent.<Rigidbody2D>().velocity.y = 0;
+		rigidbody2D.gravityScale = 0;
+		rigidbody2D.velocity.y = 0;
 //		rigidbody2D.velocity.x = 0;
 		var angle : float = Mathf.Deg2Rad * zipline.transform.rotation.eulerAngles.z;
 		var dir : Vector2 = Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
@@ -164,8 +172,9 @@ function Update () {
 		transform.Translate(dir * zipspeed * Time.deltaTime);
 	}
 
+
 	if (Input.GetKey(KeyCode.UpArrow) && grounded && !onWater && !onZipline) {
-		GetComponent.<Rigidbody2D>().velocity.y = jumpspeed;
+		rigidbody2D.velocity.y = jumpspeed;
 	}
 	if (Input.GetKey(KeyCode.LeftArrow) && !onZipline) {
 //		rigidbody2D.velocity.x = -speed;
@@ -185,13 +194,17 @@ function Update () {
 	}
 	if (Input.GetKeyDown(KeyCode.D)) { //getkeydown
 		//make umbrella go down
+		speechBubble.SetActive(false);
+			rigidbody2D.gravityScale = 2;
+			rigidbody2D.drag = 5;
+			
+			
+			
 		isPoking = false;
 		if (!onWater && !onZipline) {
 			if(umbrellaUp){
-				AudioSource.PlayClipAtPoint(umbClosed, transform.position);
 				gameObject.GetComponent(SpriteRenderer).sprite = umbrDownSprite;
 			} else {
-				AudioSource.PlayClipAtPoint(umbOpened, transform.position);
 				gameObject.GetComponent(SpriteRenderer).sprite = umbrUpSprite;
 			}
 			
