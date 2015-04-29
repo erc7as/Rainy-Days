@@ -1152,6 +1152,8 @@ MonoBehaviour:
   onZipline: 0
   isPoking: 0
   isShielding: 0
+  isHiding: 0
+  hitSwitch: 0
   sunbeamCounter: 0
   numSunbeams: 2
   respawnPoints:
@@ -1164,12 +1166,17 @@ MonoBehaviour:
   pokeUpSprite: {fileID: 21300000, guid: 8829c855ab5eb404da8548464a6ff607, type: 3}
   pokeFwdSprite: {fileID: 21300000, guid: a67b9bdc02205594e982e64099d1d425, type: 3}
   shieldSprite: {fileID: 21300000, guid: 3a4954a9460ee434bbc82589f5482362, type: 3}
+  hideSprite: {fileID: 0}
   sunbeam: {fileID: 21300000, guid: 82427ca6d240afb4081653939cf85eb3, type: 3}
   collectSound: {fileID: 8300000, guid: 9c6cb5cfefa4ac341bf142599405a11f, type: 3}
   umbOpened: {fileID: 8300000, guid: 9c7f95fdebaca494784129f4ea0d4e9c, type: 3}
   umbClosed: {fileID: 8300000, guid: 86e629f5ab81f78458f54a43d5858a5e, type: 3}
   splash: {fileID: 8300000, guid: 3ee0b6566ddc06d40a711ca98f386f27, type: 3}
+  nimboid: {fileID: 0}
   floodWater: {fileID: 0}
+  floodGround: {fileID: 0}
+  floodCloud: {fileID: 0}
+  floodUpdraft: {fileID: 0}
 --- !u!61 &1432631276
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1189,7 +1196,7 @@ AudioSource:
   m_GameObject: {fileID: 1432631270}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 895f697f46f3fb34b92dff27a94b99b8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: affe09aa996fc624d8be9f8f4d57ef04, type: 3}
   m_PlayOnAwake: 1
   m_Volume: .400000006
   m_Pitch: 1
@@ -1247,7 +1254,7 @@ AudioSource:
   m_GameObject: {fileID: 1432631270}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: f3788eb4b29027546bfcdfb214ed4a04, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: .400000006
   m_Pitch: 1
