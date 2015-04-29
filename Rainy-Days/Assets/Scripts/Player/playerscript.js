@@ -13,6 +13,7 @@ var inZipline : boolean = false;
 var onZipline : boolean = false;
 var isPoking : boolean = false;
 var isShielding : boolean = false;
+var isHiding : boolean = false;
 
 var sunbeamCounter : int = 0;
 var numSunbeams : int = 2;
@@ -25,6 +26,7 @@ var onWaterSprite : Sprite;
 var pokeUpSprite : Sprite;
 var pokeFwdSprite : Sprite;
 var shieldSprite : Sprite;
+var hideSprite : Sprite;
 
 var sunbeam : Sprite;
 var collectSound : AudioClip;
@@ -112,7 +114,7 @@ function OnTriggerEnter2D(trig: Collider2D) {
 	floodWater.SetActive(true);
 	}
 	
-	else if (trig.name == "nimboid") {
+	else if (trig.name == "nimboid" && !isHiding) {
 		Respawn();
 	}
 
@@ -170,10 +172,10 @@ function Update () {
 		transform.Translate(dir * zipspeed * Time.deltaTime);
 	}
 
-	if (Input.GetKey(KeyCode.UpArrow) && grounded && !onWater && !onZipline) {
+	if (Input.GetKey(KeyCode.UpArrow) && grounded && !onWater && !onZipline && !isHiding) {
 		 rigidbody2D.velocity.y = jumpspeed;
 	}
-	if (Input.GetKey(KeyCode.LeftArrow) && !onZipline) {
+	if (Input.GetKey(KeyCode.LeftArrow) && !onZipline && !isHiding) {
 //		rigidbody2D.velocity.x = -speed;
 		transform.Translate(Vector2(-1,0) * Time.deltaTime*speed);
 		if(!direction) {
@@ -181,7 +183,7 @@ function Update () {
 		direction = true;
 		}
 	}
-	if (Input.GetKey(KeyCode.RightArrow) && !onZipline) {
+	if (Input.GetKey(KeyCode.RightArrow) && !onZipline && !isHiding) {
 //		rigidbody2D.velocity.x = speed;
 		transform.Translate(Vector2(1,0) * Time.deltaTime*speed);
 		if(direction) {
@@ -206,9 +208,10 @@ function Update () {
 		}
 	}
 
-	if (Input.GetKeyDown(KeyCode.W)) {
+	if (Input.GetKeyDown(KeyCode.W) && !onWater) {
 		if (umbrellaUp) {
-			
+			isHiding = true;
+			gameObject.GetComponent(SpriteRenderer).sprite = hideSprite;
 		}
 		else {
 			//POKE UP
@@ -217,7 +220,7 @@ function Update () {
 		}
 	}
 
-	if (Input.GetKeyDown(KeyCode.S)) {
+	if (Input.GetKeyDown(KeyCode.S) && !onWater) {
 		if (umbrellaUp) {
 			isShielding = true;
 			gameObject.GetComponent(SpriteRenderer).sprite = shieldSprite;
@@ -237,6 +240,15 @@ function Update () {
 		}
 		else if (isShielding) {
 			isShielding = false;
+			if(!onWater){
+				gameObject.GetComponent(SpriteRenderer).sprite = umbrUpSprite;
+			}
+			else {
+				gameObject.GetComponent(SpriteRenderer).sprite = onWaterSprite;
+			}
+		}
+		else if (isHiding) {
+			isHiding = false;
 			gameObject.GetComponent(SpriteRenderer).sprite = umbrUpSprite;
 		}
 	}
