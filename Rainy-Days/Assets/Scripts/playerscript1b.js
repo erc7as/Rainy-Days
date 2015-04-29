@@ -88,6 +88,9 @@ function OnTriggerEnter2D(trig: Collider2D) {
 	else if (trig.name == "updraft") {
 		inUpdraft = true;
 	}
+	else if (trig.name == "levelTrigger" && speechBubble.active == false) {
+	Application.LoadLevel("Level1C");
+	}
 
 //	else if (trig.name == "zipline") {
 //		inZipline = true;
