@@ -5,7 +5,7 @@ var jumpspeed : int = 20;
 var zipspeed : int = 10;
 
 var direction : boolean = true; //facing left is true
-var umbrellaUp : boolean = true; //default will be to have the umbrella be up
+var umbrellaUp : boolean = false; //default will be to have the umbrella be up
 var grounded : boolean = false;
 var onWater : boolean = false; //NEED COLLISION, A METHOD TO MAKE THIS TRUE IF PERSON ENCOUNTERS WATER
 var inUpdraft : boolean = false;
