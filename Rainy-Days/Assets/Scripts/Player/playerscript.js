@@ -12,6 +12,7 @@ var inUpdraft : boolean = false;
 var inZipline : boolean = false;
 var onZipline : boolean = false;
 var isPoking : boolean = false;
+var isShielding : boolean = false;
 
 var sunbeamCounter : int = 0;
 var numSunbeams : int = 2;
@@ -23,6 +24,7 @@ var umbrUpSprite : Sprite;
 var onWaterSprite : Sprite;
 var pokeUpSprite : Sprite;
 var pokeFwdSprite : Sprite;
+var shieldSprite : Sprite;
 
 var sunbeam : Sprite;
 
@@ -166,6 +168,8 @@ function Update () {
 	if (Input.GetKeyDown(KeyCode.D)) { //getkeydown
 		//make umbrella go down
 		isPoking = false;
+		isShielding = false;
+		print("Not shielding");
 		if (!onWater && !onZipline) {
 			if(umbrellaUp){
 				gameObject.GetComponent(SpriteRenderer).sprite = umbrDownSprite;
@@ -178,7 +182,10 @@ function Update () {
 	}
 
 	if (Input.GetKeyDown(KeyCode.W)) {
-		if(!umbrellaUp) {
+		if (umbrellaUp) {
+			
+		}
+		else {
 			//POKE UP
 			isPoking = true;
 			gameObject.GetComponent(SpriteRenderer).sprite = pokeUpSprite;
@@ -186,7 +193,12 @@ function Update () {
 	}
 
 	if (Input.GetKeyDown(KeyCode.S)) {
-		if(!umbrellaUp) {
+		if (umbrellaUp) {
+			isShielding = true;
+			print("Shielding");
+			gameObject.GetComponent(SpriteRenderer).sprite = shieldSprite;
+		}
+		else {
 			//POKE FORWARD 
 			isPoking = true;
 			gameObject.GetComponent(SpriteRenderer).sprite = pokeFwdSprite;
@@ -194,10 +206,15 @@ function Update () {
 	}
 
 	if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S)) {
-		if(isPoking) {
+		if (isPoking) {
 			//UNPOKE
 			isPoking = false;
 			gameObject.GetComponent(SpriteRenderer).sprite = umbrDownSprite;
+		}
+		else if (isShielding) {
+			isShielding = false;
+			print("Not shielding");
+			gameObject.GetComponent(SpriteRenderer).sprite = umbrUpSprite;
 		}
 	}
 
