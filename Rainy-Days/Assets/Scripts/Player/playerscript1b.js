@@ -153,20 +153,20 @@ function Update () {
 
 	if (umbrellaUp) {
 		if (inUpdraft) {
-			rigidbody2D.gravityScale = -2;
-			rigidbody2D.drag = 2;
+			GetComponent.<Rigidbody2D>().gravityScale = -2;
+			GetComponent.<Rigidbody2D>().drag = 2;
 		} else {
-			rigidbody2D.gravityScale = 2;
-			rigidbody2D.drag = 5;
+			GetComponent.<Rigidbody2D>().gravityScale = 2;
+			GetComponent.<Rigidbody2D>().drag = 5;
 		}
 	} else{
-		rigidbody2D.gravityScale = 8;
-		rigidbody2D.drag = 0;
+		GetComponent.<Rigidbody2D>().gravityScale = 8;
+		GetComponent.<Rigidbody2D>().drag = 0;
 	}
 
 	if (onZipline) {
-		rigidbody2D.gravityScale = 0;
-		rigidbody2D.velocity.y = 0;
+		GetComponent.<Rigidbody2D>().gravityScale = 0;
+		GetComponent.<Rigidbody2D>().velocity.y = 0;
 //		rigidbody2D.velocity.x = 0;
 		var angle : float = Mathf.Deg2Rad * zipline.transform.rotation.eulerAngles.z;
 		var dir : Vector2 = Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
@@ -177,7 +177,7 @@ function Update () {
 
 
 	if (Input.GetKey(KeyCode.UpArrow) && grounded && !onWater && !onZipline) {
-		rigidbody2D.velocity.y = jumpspeed;
+		GetComponent.<Rigidbody2D>().velocity.y = jumpspeed;
 	}
 	if (Input.GetKey(KeyCode.LeftArrow) && !onZipline) {
 //		rigidbody2D.velocity.x = -speed;
@@ -200,8 +200,8 @@ function Update () {
 	if (Input.GetKeyDown(KeyCode.D)) { //getkeydown
 		//make umbrella go down
 		speechBubble.SetActive(false);
-			rigidbody2D.gravityScale = 2;
-			rigidbody2D.drag = 5;
+			GetComponent.<Rigidbody2D>().gravityScale = 2;
+			GetComponent.<Rigidbody2D>().drag = 5;
 			
 			
 			

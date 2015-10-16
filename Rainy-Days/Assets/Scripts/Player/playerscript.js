@@ -174,22 +174,29 @@ function OnTriggerExit2D(trig: Collider2D) {
 }
 
 function Update () {
+	fallingUpdate();
+	if(!onWater) { actionKeysUpdate(); }
+	if(!onZipline && !isHiding) { moveKeysUpdate(); }
+	grounded = false;
+}
+
+function fallingUpdate() {
 	if (umbrellaUp) {
 		if (inUpdraft) {
-			rigidbody2D.gravityScale = -2;
-			rigidbody2D.drag = 2;
+			GetComponent.<Rigidbody2D>().gravityScale = -2;
+			GetComponent.<Rigidbody2D>().drag = 2;
 		} else {
-			rigidbody2D.gravityScale = 2;
-			rigidbody2D.drag = 5;
+			GetComponent.<Rigidbody2D>().gravityScale = 2;
+			GetComponent.<Rigidbody2D>().drag = 5;
 		}
 	} else {
-		rigidbody2D.gravityScale = 8;
-		rigidbody2D.drag = 0;
+		GetComponent.<Rigidbody2D>().gravityScale = 8;
+		GetComponent.<Rigidbody2D>().drag = 0;
 	}
 
 	if (onZipline) {
-		rigidbody2D.gravityScale = 0;
-		rigidbody2D.velocity.y = 0;
+		GetComponent.<Rigidbody2D>().gravityScale = 0;
+		GetComponent.<Rigidbody2D>().velocity.y = 0;
 //		rigidbody2D.velocity.x = 0;
 		var angle : float = Mathf.Deg2Rad * zipline.transform.rotation.eulerAngles.z;
 		var dir : Vector2 = Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
@@ -198,31 +205,41 @@ function Update () {
 		transform.Translate(dir * zipspeed * Time.deltaTime);
 	}
 
-	if (Input.GetKey(KeyCode.UpArrow) && grounded && !onWater && !onZipline && !isHiding) {
-		 rigidbody2D.velocity.y = jumpspeed;
+}
+
+function moveKeysUpdate() {
+	if (Input.GetKey(KeyCode.UpArrow) && grounded && !onWater) {
+		 GetComponent.<Rigidbody2D>().velocity.y = jumpspeed;
 	}
-	if (Input.GetKey(KeyCode.LeftArrow) && !onZipline && !isHiding) {
+	if (Input.GetKey(KeyCode.LeftArrow)) {
 //		rigidbody2D.velocity.x = -speed;
 		transform.Translate(Vector2(-1,0) * Time.deltaTime*speed);
-		if(!direction) {
-		transform.localScale.x *= -1;
-		direction = true;
+		if(!direction && !isPoking) {
+			transform.localScale.x *= -1;
+			direction = true;
 		}
 	}
-	if (Input.GetKey(KeyCode.RightArrow) && !onZipline && !isHiding) {
+	if (Input.GetKey(KeyCode.RightArrow)) {
 //		rigidbody2D.velocity.x = speed;
 		transform.Translate(Vector2(1,0) * Time.deltaTime*speed);
-		if(direction) {
-		transform.localScale.x *= -1;
-		direction = false;
+		if(direction && !isPoking) {
+			transform.localScale.x *= -1;
+			direction = false;
 		}
 	}
-	if (Input.GetKeyDown(KeyCode.D)) { //getkeydown
+}
+
+function actionKeysUpdate() {
+	if (Input.GetKeyDown(KeyCode.E)) { //getkeydown
 		//make umbrella go down
-		isPoking = false;
-		isShielding = false;
-		if (!onWater && !onZipline) {
-			if(umbrellaUp){
+		if (!onZipline) {
+			if (isShielding) {
+				AudioSource.PlayClipAtPoint(umbClosed, transform.position);
+				gameObject.GetComponent(SpriteRenderer).sprite = pokeFwdSprite;
+			} else if (isPoking) {
+				AudioSource.PlayClipAtPoint(umbOpened, transform.position);
+				gameObject.GetComponent(SpriteRenderer).sprite = shieldSprite;
+			} else if (umbrellaUp){
 				AudioSource.PlayClipAtPoint(umbClosed, transform.position);
 				gameObject.GetComponent(SpriteRenderer).sprite = umbrDownSprite;
 			} else {
@@ -230,11 +247,14 @@ function Update () {
 				gameObject.GetComponent(SpriteRenderer).sprite = umbrUpSprite;
 			}
 			
+			var temp : boolean = isPoking;
+			isPoking = isShielding;
+			isShielding = temp;
 			umbrellaUp = !umbrellaUp; //should enable features only available when umbrella is down
 		}
 	}
 
-	if (Input.GetKeyDown(KeyCode.W) && !onWater) {
+	if (Input.GetKeyDown(KeyCode.W)) {
 		if (umbrellaUp) {
 			isHiding = true;
 			gameObject.GetComponent(SpriteRenderer).sprite = hideSprite;
@@ -246,7 +266,7 @@ function Update () {
 		}
 	}
 
-	if (Input.GetKeyDown(KeyCode.S) && !onWater) {
+	if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))) {
 		if (umbrellaUp) {
 			isShielding = true;
 			gameObject.GetComponent(SpriteRenderer).sprite = shieldSprite;
@@ -256,24 +276,51 @@ function Update () {
 			isPoking = true;
 			gameObject.GetComponent(SpriteRenderer).sprite = pokeFwdSprite;
 		}
+		if (Input.GetKeyDown(KeyCode.A) ? !direction : direction) {
+			transform.localScale.x *= -1;
+			direction = !direction;
+		}
+		
 	}
-
-	if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S)) {
+	if (Input.GetKeyUp(KeyCode.A)) {
+		if (Input.GetKey(KeyCode.D)) {
+			if (direction){
+				transform.localScale.x *= -1;
+				direction = !direction;
+			}
+		} else if (isPoking) {
+			//UNPOKE
+			isPoking = false;
+			gameObject.GetComponent(SpriteRenderer).sprite = umbrDownSprite;
+		} else if (isShielding) {
+			isShielding = false;
+			gameObject.GetComponent(SpriteRenderer).sprite = umbrUpSprite;
+		}
+	}
+	if (Input.GetKeyUp(KeyCode.D)) {
+		if (Input.GetKey(KeyCode.A)) {
+			if (!direction) {
+				transform.localScale.x *= -1;
+				direction = !direction;
+			}
+		} else if (isPoking) {
+			//UNPOKE
+			isPoking = false;
+			gameObject.GetComponent(SpriteRenderer).sprite = umbrDownSprite;
+		} else if (isShielding) {
+			isShielding = false;
+			gameObject.GetComponent(SpriteRenderer).sprite = umbrUpSprite;
+		}
+	}
+	if (Input.GetKeyUp(KeyCode.W)) {
 		if (isPoking) {
 			//UNPOKE
 			isPoking = false;
 			gameObject.GetComponent(SpriteRenderer).sprite = umbrDownSprite;
-		}
-		else if (isShielding) {
+		} else if (isShielding) {
 			isShielding = false;
-			if(!onWater){
-				gameObject.GetComponent(SpriteRenderer).sprite = umbrUpSprite;
-			}
-			else {
-				gameObject.GetComponent(SpriteRenderer).sprite = onWaterSprite;
-			}
-		}
-		else if (isHiding) {
+			gameObject.GetComponent(SpriteRenderer).sprite = umbrUpSprite;
+		} else if (isHiding) {
 			isHiding = false;
 			gameObject.GetComponent(SpriteRenderer).sprite = umbrUpSprite;
 		}
@@ -290,8 +337,6 @@ function Update () {
 //			print("Off zipline");
 		}
 	}
-	
-	grounded = false;
 }
 
 function Respawn() { //will go thru array of all of the current levels respawn points and will put player at closest respawning point

@@ -16,11 +16,11 @@ function OnTriggerStay2D(trig: Collider2D) {
 		transform.parent.localScale.x = (dist <= 0 ? 1 : -1) * Mathf.Abs(transform.parent.localScale.x);
 		if (ps.isShielding) {
 			var dir = Vector2(Mathf.Sign(dist), 0);
-			trig.rigidbody2D.AddForce(20 * dir);
+			trig.GetComponent.<Rigidbody2D>().AddForce(20 * dir);
 		}
 		else if (dist) {
 			var vec = Vector2(1 / dist, 0);
-			trig.rigidbody2D.AddForce(500 * vec);
+			trig.GetComponent.<Rigidbody2D>().AddForce(500 * vec);
 		}
 	}
 }
