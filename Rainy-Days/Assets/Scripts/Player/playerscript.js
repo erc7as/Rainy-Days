@@ -47,7 +47,7 @@ function Start () {
 }
 	
 
-function OnTriggerEnter2D(trig: Collider2D) {
+function OnTriggerStay2D(trig: Collider2D) {
 	if(trig.name == "water") {
 	AudioSource.PlayClipAtPoint(splash, transform.position);
 		if (umbrellaUp) {
