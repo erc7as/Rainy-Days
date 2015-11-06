@@ -60,11 +60,29 @@ PlayerSettings:
   xboxSpeechDB: 0
   xboxEnableHeadOrientation: 0
   xboxEnableGuest: 0
+<<<<<<< HEAD
+=======
+  n3dsDisableStereoscopicView: 0
+  n3dsEnableSharedListOpt: 1
+  n3dsEnableVSync: 0
+>>>>>>> 1ddcc0e87474efea7e8b7bbd5f4805690fcc3d2c
   xboxOneResolution: 0
   ps3SplashScreen: {fileID: 0}
   videoMemoryForVertexBuffers: 0
   psp2PowerMode: 0
   psp2AcquireBGM: 1
+<<<<<<< HEAD
+=======
+  wiiUTVResolution: 0
+  wiiUGamePadMSAA: 1
+  wiiUSupportsNunchuk: 0
+  wiiUSupportsClassicController: 0
+  wiiUSupportsBalanceBoard: 0
+  wiiUSupportsMotionPlus: 0
+  wiiUSupportsProController: 0
+  wiiUAllowScreenCapture: 1
+  wiiUControllerCount: 0
+>>>>>>> 1ddcc0e87474efea7e8b7bbd5f4805690fcc3d2c
   m_SupportedAspectRatios:
     4:3: 1
     5:4: 1
@@ -84,8 +102,10 @@ PlayerSettings:
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   apiCompatibilityLevel: 2
+  stripEngineCode: 1
   iPhoneStrippingLevel: 0
   iPhoneScriptCallOptimization: 0
+  iPhoneBuildNumber: 0
   ForceInternetPermission: 0
   ForceSDCardPermission: 0
   CreateWallpaper: 0
@@ -147,6 +167,26 @@ PlayerSettings:
     m_Automatic: 0
   webPlayerTemplate: APPLICATION:Default
   m_TemplateCustomTags: {}
+<<<<<<< HEAD
+=======
+  wiiUTitleID: 0005000011000000
+  wiiUGroupID: 00010000
+  wiiUCommonSaveSize: 4096
+  wiiUAccountSaveSize: 2048
+  wiiUOlvAccessKey: 0
+  wiiUTinCode: 0
+  wiiUJoinGameId: 0
+  wiiUJoinGameModeMask: 0000000000000000
+  wiiUCommonBossSize: 0
+  wiiUAccountBossSize: 0
+  wiiUAddOnUniqueIDs: []
+  wiiUMainThreadStackSize: 3072
+  wiiULoaderThreadStackSize: 1024
+  wiiUSystemHeapSize: 128
+  wiiUTVStartupScreen: {fileID: 0}
+  wiiUGamePadStartupScreen: {fileID: 0}
+  wiiUProfilerLibPath: 
+>>>>>>> 1ddcc0e87474efea7e8b7bbd5f4805690fcc3d2c
   actionOnDotNetUnhandledException: 1
   enableInternalProfiler: 0
   logObjCUncaughtExceptions: 1
@@ -197,17 +237,30 @@ PlayerSettings:
   ps4BackgroundImagePath: 
   ps4StartupImagePath: 
   ps4SaveDataImagePath: 
+<<<<<<< HEAD
   ps4BGMPath: 
   ps4ShareFilePath: 
   ps4ShareOverlayImagePath: 
   ps4PrivacyGuardImagePath: 
   ps4NPtitleDatPath: 
   ps4RemotePlayKeyAssignment: -1
+=======
+  ps4SdkOverride: 
+  ps4BGMPath: 
+  ps4ShareFilePath: 
+  ps4NPtitleDatPath: 
+  ps4RemotePlayKeyAssignment: -1
+  ps4RemotePlayKeyMappingDir: 
+>>>>>>> 1ddcc0e87474efea7e8b7bbd5f4805690fcc3d2c
   ps4EnterButtonAssignment: 1
   ps4ApplicationParam1: 0
   ps4ApplicationParam2: 0
   ps4ApplicationParam3: 0
   ps4ApplicationParam4: 0
+<<<<<<< HEAD
+=======
+  ps4DownloadDataSize: 0
+>>>>>>> 1ddcc0e87474efea7e8b7bbd5f4805690fcc3d2c
   ps4GarlicHeapSize: 2048
   ps4Passcode: eaoEiIgxIX4a2dREbbSqWy6yhKIDCdJO
   ps4pnSessions: 1
@@ -215,6 +268,14 @@ PlayerSettings:
   ps4pnFriends: 1
   ps4pnGameCustomData: 1
   playerPrefsSupport: 0
+<<<<<<< HEAD
+=======
+  ps4ReprojectionSupport: 0
+  ps4attribUserManagement: 0
+  ps4attribMoveSupport: 0
+  ps4attrib3DSupport: 0
+  ps4attribShareSupport: 0
+>>>>>>> 1ddcc0e87474efea7e8b7bbd5f4805690fcc3d2c
   monoEnv: 
   psp2Splashimage: {fileID: 0}
   psp2NPTrophyPackPath: 
@@ -233,7 +294,11 @@ PlayerSettings:
   psp2LiveAreaTrialPath: 
   psp2PatchChangeInfoPath: 
   psp2PatchOriginalPackage: 
+<<<<<<< HEAD
   psp2PackagePassword: 
+=======
+  psp2PackagePassword: yapnxrpMCARCr4zdGc81tBDKsMlaZTXC
+>>>>>>> 1ddcc0e87474efea7e8b7bbd5f4805690fcc3d2c
   psp2KeystoneFile: 
   psp2MemoryExpansionMode: 0
   psp2DRMType: 0
@@ -354,6 +419,17 @@ PlayerSettings:
   tizenSigningProfileName: 
   tizenGPSPermissions: 0
   tizenMicrophonePermissions: 0
+  n3dsUseExtSaveData: 0
+  n3dsCompressStaticMem: 1
+  n3dsExtSaveDataNumber: 0x12345
+  n3dsStackSize: 131072
+  n3dsTargetPlatform: 2
+  n3dsRegion: 7
+  n3dsMediaSize: 0
+  n3dsLogoStyle: 3
+  n3dsTitle: GameName
+  n3dsProductCode: 
+  n3dsApplicationId: 0xFF3FF
   stvDeviceAddress: 
   stvProductDescription: 
   stvProductAuthor: 
@@ -379,6 +455,10 @@ PlayerSettings:
   XboxOneAllowedProductIds: []
   XboxOnePersistentLocalStorageSize: 0
   intPropertyNames:
+<<<<<<< HEAD
+=======
+  - Android::ScriptingBackend
+>>>>>>> 1ddcc0e87474efea7e8b7bbd5f4805690fcc3d2c
   - Metro::ScriptingBackend
   - Standalone::ScriptingBackend
   - WP8::ScriptingBackend
@@ -387,8 +467,13 @@ PlayerSettings:
   - WebGL::exceptionSupport
   - WebGL::memorySize
   - iOS::Architecture
+<<<<<<< HEAD
   - iOS::EnableIncrementalBuildSupportForIl2cpp
   - iOS::ScriptingBackend
+=======
+  - iOS::ScriptingBackend
+  Android::ScriptingBackend: 0
+>>>>>>> 1ddcc0e87474efea7e8b7bbd5f4805690fcc3d2c
   Metro::ScriptingBackend: 2
   Standalone::ScriptingBackend: 0
   WP8::ScriptingBackend: 2
@@ -397,7 +482,10 @@ PlayerSettings:
   WebGL::exceptionSupport: 1
   WebGL::memorySize: 256
   iOS::Architecture: 2
+<<<<<<< HEAD
   iOS::EnableIncrementalBuildSupportForIl2cpp: 0
+=======
+>>>>>>> 1ddcc0e87474efea7e8b7bbd5f4805690fcc3d2c
   iOS::ScriptingBackend: 1
   boolPropertyNames:
   - WebGL::analyzeBuildSize
@@ -415,7 +503,10 @@ PlayerSettings:
   additionalIl2CppArgs::additionalIl2CppArgs: 
   firstStreamedSceneWithResources: 0
   cloudProjectId: 
+<<<<<<< HEAD
   projectId: 
+=======
+>>>>>>> 1ddcc0e87474efea7e8b7bbd5f4805690fcc3d2c
   projectName: 
   organizationId: 
   cloudEnabled: 0
