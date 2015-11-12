@@ -1,21 +1,35 @@
 fileFormatVersion: 2
 guid: ff0d13dd22fe89e49bd9303420800346
+timeCreated: 1447088908
+licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - zipline: {instanceID: 0}
-  - umbrDownSprite: {fileID: 21300000, guid: 680a62336e638144fb7e840cee85e642, type: 3}
-  - umbrUpSprite: {fileID: 21300000, guid: c571271eb7785d248b1cad598b412994, type: 3}
+  - closedNeutralSprite: {fileID: 21300000, guid: 680a62336e638144fb7e840cee85e642,
+      type: 3}
+  - closedUpSprite: {fileID: 21300000, guid: 8829c855ab5eb404da8548464a6ff607, type: 3}
+  - closedForwardSprite: {fileID: 21300000, guid: a67b9bdc02205594e982e64099d1d425,
+      type: 3}
+  - openNeutralSprite: {fileID: 21300000, guid: c571271eb7785d248b1cad598b412994,
+      type: 3}
+  - openUpSprite: {fileID: 21300000, guid: b638be5b63fe7134aa2cd740d233d4a0, type: 3}
+  - openForwardSprite: {fileID: 21300000, guid: a1c77964486c7b9439b10d8db11f0722,
+      type: 3}
   - onWaterSprite: {fileID: 21300000, guid: f4e3379b861a5d045b0266a3cf1b10c2, type: 3}
-  - pokeUpSprite: {fileID: 21300000, guid: 8829c855ab5eb404da8548464a6ff607, type: 3}
-  - pokeFwdSprite: {fileID: 21300000, guid: a67b9bdc02205594e982e64099d1d425, type: 3}
-  - shieldSprite: {fileID: 21300000, guid: 3a4954a9460ee434bbc82589f5482362, type: 3}
+  - hideSprite: {fileID: 21300000, guid: 30f2232dca4f83c4f9788982f31183bb, type: 3}
   - sunbeam: {fileID: 21300000, guid: 82427ca6d240afb4081653939cf85eb3, type: 3}
   - collectSound: {fileID: 8300000, guid: 9c6cb5cfefa4ac341bf142599405a11f, type: 3}
   - umbOpened: {fileID: 8300000, guid: 9c7f95fdebaca494784129f4ea0d4e9c, type: 3}
   - umbClosed: {fileID: 8300000, guid: 86e629f5ab81f78458f54a43d5858a5e, type: 3}
   - splash: {fileID: 8300000, guid: 3ee0b6566ddc06d40a711ca98f386f27, type: 3}
+  - nimboid: {instanceID: 0}
   - floodWater: {instanceID: 0}
+  - floodGround: {instanceID: 0}
+  - floodCloud: {instanceID: 0}
+  - floodUpdraft: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 

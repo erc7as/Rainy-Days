@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Button
+  - Water
+  - Level
+  - Updraft
+  - Sunbeam
+  - Puddle
   layers:
   - Default
   - TransparentFX

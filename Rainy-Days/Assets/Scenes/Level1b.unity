@@ -37,9 +37,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
---- !u!127 &3
-LevelGameManager:
-  m_ObjectHideFlags: 0
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -68,6 +65,7 @@ LightmapSettings:
     m_TextureCompression: 0
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
+    m_ReflectionCompression: 2
   m_LightmapSnapshot: {fileID: 0}
   m_RuntimeCPUUsage: 25
 --- !u!196 &5
@@ -647,7 +645,7 @@ GameObject:
   - 61: {fileID: 153032533}
   m_Layer: 0
   m_Name: updraft
-  m_TagString: Untagged
+  m_TagString: Updraft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -783,7 +781,7 @@ GameObject:
   - 61: {fileID: 168857516}
   m_Layer: 0
   m_Name: updraft
-  m_TagString: Untagged
+  m_TagString: Updraft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1191,7 +1189,7 @@ GameObject:
   - 61: {fileID: 247003418}
   m_Layer: 0
   m_Name: sunbeam
-  m_TagString: Untagged
+  m_TagString: Sunbeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1638,9 +1636,10 @@ GameObject:
   - 4: {fileID: 302069546}
   - 212: {fileID: 302069545}
   - 61: {fileID: 302069544}
+  - 114: {fileID: 302069547}
   m_Layer: 0
   m_Name: new level
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1696,6 +1695,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 109
+--- !u!114 &302069547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 302069543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2fed350f915e8442b8d6f2734640d3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScene: Level2
 --- !u!1 &314494328
 GameObject:
   m_ObjectHideFlags: 0
@@ -2182,7 +2193,7 @@ GameObject:
   - 61: {fileID: 373139597}
   m_Layer: 0
   m_Name: sunbeam
-  m_TagString: Untagged
+  m_TagString: Sunbeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2425,9 +2436,8 @@ GameObject:
   - 212: {fileID: 421792196}
   - 68: {fileID: 421792195}
   - 61: {fileID: 421792194}
-  - 114: {fileID: 421792198}
   m_Layer: 0
-  m_Name: platform
+  m_Name: floodplatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2498,17 +2508,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 77
---- !u!114 &421792198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 421792193}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cdf5fa5846ada04fa35f5bba04c102c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &423019294
 GameObject:
   m_ObjectHideFlags: 0
@@ -2521,7 +2520,7 @@ GameObject:
   - 61: {fileID: 423019295}
   m_Layer: 0
   m_Name: updraft
-  m_TagString: Untagged
+  m_TagString: Updraft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2589,7 +2588,7 @@ GameObject:
   - 61: {fileID: 433817555}
   m_Layer: 0
   m_Name: sunbeam
-  m_TagString: Untagged
+  m_TagString: Sunbeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3034,25 +3033,13 @@ GameObject:
   - 4: {fileID: 513975405}
   - 212: {fileID: 513975404}
   - 61: {fileID: 513975403}
-  - 114: {fileID: 513975402}
   m_Layer: 0
-  m_Name: ground
+  m_Name: floodground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &513975402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 513975401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cdf5fa5846ada04fa35f5bba04c102c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &513975403
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3252,7 +3239,7 @@ GameObject:
   - 61: {fileID: 532920226}
   m_Layer: 0
   m_Name: updraft
-  m_TagString: Untagged
+  m_TagString: Updraft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3607,6 +3594,7 @@ AudioSource:
   m_Pitch: 1
   Loop: 1
   Mute: 0
+  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: .940746307
@@ -3676,6 +3664,7 @@ AudioSource:
   m_Pitch: 1
   Loop: 1
   Mute: 0
+  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1.05925369
@@ -3745,7 +3734,7 @@ MonoBehaviour:
   jumpspeed: 20
   zipspeed: 10
   direction: 0
-  umbrellaUp: 0
+  umbrellaOpen: 0
   grounded: 0
   onWater: 0
   inUpdraft: 0
@@ -3754,19 +3743,21 @@ MonoBehaviour:
   isPoking: 0
   isShielding: 0
   isHiding: 0
-  hitSwitch: 0
   sunbeamCounter: 0
   numSunbeams: 4
   respawnPoints:
   - {fileID: 869471266}
   - {fileID: 494281920}
   zipline: {fileID: 0}
-  umbrDownSprite: {fileID: 21300000, guid: 680a62336e638144fb7e840cee85e642, type: 3}
-  umbrUpSprite: {fileID: 21300000, guid: c571271eb7785d248b1cad598b412994, type: 3}
+  closedNeutralSprite: {fileID: 21300000, guid: 680a62336e638144fb7e840cee85e642,
+    type: 3}
+  closedUpSprite: {fileID: 21300000, guid: 8829c855ab5eb404da8548464a6ff607, type: 3}
+  closedForwardSprite: {fileID: 21300000, guid: a67b9bdc02205594e982e64099d1d425,
+    type: 3}
+  openNeutralSprite: {fileID: 21300000, guid: c571271eb7785d248b1cad598b412994, type: 3}
+  openUpSprite: {fileID: 21300000, guid: b638be5b63fe7134aa2cd740d233d4a0, type: 3}
+  openForwardSprite: {fileID: 21300000, guid: a1c77964486c7b9439b10d8db11f0722, type: 3}
   onWaterSprite: {fileID: 21300000, guid: f4e3379b861a5d045b0266a3cf1b10c2, type: 3}
-  pokeUpSprite: {fileID: 21300000, guid: 8829c855ab5eb404da8548464a6ff607, type: 3}
-  pokeFwdSprite: {fileID: 21300000, guid: a67b9bdc02205594e982e64099d1d425, type: 3}
-  shieldSprite: {fileID: 21300000, guid: a1c77964486c7b9439b10d8db11f0722, type: 3}
   hideSprite: {fileID: 21300000, guid: 30f2232dca4f83c4f9788982f31183bb, type: 3}
   sunbeam: {fileID: 21300000, guid: 82427ca6d240afb4081653939cf85eb3, type: 3}
   collectSound: {fileID: 8300000, guid: 9c6cb5cfefa4ac341bf142599405a11f, type: 3}
@@ -3774,10 +3765,6 @@ MonoBehaviour:
   umbClosed: {fileID: 8300000, guid: 86e629f5ab81f78458f54a43d5858a5e, type: 3}
   splash: {fileID: 8300000, guid: 3ee0b6566ddc06d40a711ca98f386f27, type: 3}
   nimboid: {fileID: 8300000, guid: bc8d5a8b45aec2b4c8fccf9280c0938b, type: 3}
-  floodWater: {fileID: 1593123671}
-  floodGround: {fileID: 513975401}
-  floodCloud: {fileID: 421792193}
-  floodUpdraft: {fileID: 0}
 --- !u!61 &608904912
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5177,9 +5164,10 @@ GameObject:
   - 4: {fileID: 1010073478}
   - 212: {fileID: 1010073477}
   - 60: {fileID: 1010073476}
+  - 114: {fileID: 1010073479}
   m_Layer: 0
   m_Name: puddle
-  m_TagString: Untagged
+  m_TagString: Puddle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5280,6 +5268,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 79
+--- !u!114 &1010073479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1010073475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e0be34694fa7d44fa3f2268d990b520, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destination: {fileID: 1655092433}
 --- !u!1 &1021631051
 GameObject:
   m_ObjectHideFlags: 0
@@ -6145,7 +6145,7 @@ GameObject:
   - 61: {fileID: 1241817560}
   m_Layer: 0
   m_Name: updraft
-  m_TagString: Untagged
+  m_TagString: Updraft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6828,9 +6828,10 @@ GameObject:
   - 4: {fileID: 1423455861}
   - 212: {fileID: 1423455860}
   - 61: {fileID: 1423455859}
+  - 114: {fileID: 1423455862}
   m_Layer: 0
-  m_Name: eventSwitch1
-  m_TagString: Untagged
+  m_Name: level1Flood
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6886,6 +6887,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 47
+--- !u!114 &1423455862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1423455858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be2494c92e5f46844bd304593b319f21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floodWater: {fileID: 1593123671}
+  floodGround: {fileID: 513975401}
 --- !u!1 &1443334400
 GameObject:
   m_ObjectHideFlags: 0
@@ -7372,7 +7386,7 @@ GameObject:
   - 61: {fileID: 1561743740}
   m_Layer: 0
   m_Name: updraft
-  m_TagString: Untagged
+  m_TagString: Updraft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7560,10 +7574,9 @@ GameObject:
   - 4: {fileID: 1593123674}
   - 212: {fileID: 1593123673}
   - 61: {fileID: 1593123672}
-  - 114: {fileID: 1593123675}
   m_Layer: 0
-  m_Name: water
-  m_TagString: Untagged
+  m_Name: floodwater
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7619,17 +7632,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 48
---- !u!114 &1593123675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1593123671}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cdf5fa5846ada04fa35f5bba04c102c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1610949543
 GameObject:
   m_ObjectHideFlags: 0
@@ -8960,7 +8962,7 @@ GameObject:
   - 61: {fileID: 1871673922}
   m_Layer: 0
   m_Name: sunbeam
-  m_TagString: Untagged
+  m_TagString: Sunbeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9655,9 +9657,10 @@ GameObject:
   - 4: {fileID: 2104562846}
   - 212: {fileID: 2104562845}
   - 61: {fileID: 2104562844}
+  - 114: {fileID: 2104562847}
   m_Layer: 0
-  m_Name: eventSwitch2
-  m_TagString: Untagged
+  m_Name: level1Cloud
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9713,3 +9716,15 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 76
+--- !u!114 &2104562847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2104562843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 645361d8f4469f64e90c3102c8405d6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floodCloud: {fileID: 421792193}

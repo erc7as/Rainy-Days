@@ -37,9 +37,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
---- !u!127 &3
-LevelGameManager:
-  m_ObjectHideFlags: 0
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -68,6 +65,7 @@ LightmapSettings:
     m_TextureCompression: 0
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
+    m_ReflectionCompression: 2
   m_LightmapSnapshot: {fileID: 0}
   m_RuntimeCPUUsage: 25
 --- !u!196 &5
@@ -226,7 +224,7 @@ GameObject:
   - 61: {fileID: 105582306}
   m_Layer: 0
   m_Name: updraft
-  m_TagString: Untagged
+  m_TagString: Updraft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -578,6 +576,7 @@ AudioSource:
   m_Pitch: 1
   Loop: 1
   Mute: 0
+  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1.05566597
@@ -647,6 +646,7 @@ AudioSource:
   m_Pitch: 1
   Loop: 1
   Mute: 0
+  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -716,7 +716,7 @@ MonoBehaviour:
   jumpspeed: 20
   zipspeed: 10
   direction: 0
-  umbrellaUp: 1
+  umbrellaOpen: 0
   grounded: 0
   onWater: 0
   inUpdraft: 0
@@ -725,19 +725,21 @@ MonoBehaviour:
   isPoking: 0
   isShielding: 0
   isHiding: 0
-  hitSwitch: 0
   sunbeamCounter: 0
   numSunbeams: 4
   respawnPoints:
   - {fileID: 1223404049}
   - {fileID: 1088785689}
   zipline: {fileID: 0}
-  umbrDownSprite: {fileID: 21300000, guid: 680a62336e638144fb7e840cee85e642, type: 3}
-  umbrUpSprite: {fileID: 21300000, guid: c571271eb7785d248b1cad598b412994, type: 3}
+  closedNeutralSprite: {fileID: 21300000, guid: 680a62336e638144fb7e840cee85e642,
+    type: 3}
+  closedUpSprite: {fileID: 21300000, guid: 8829c855ab5eb404da8548464a6ff607, type: 3}
+  closedForwardSprite: {fileID: 21300000, guid: a67b9bdc02205594e982e64099d1d425,
+    type: 3}
+  openNeutralSprite: {fileID: 21300000, guid: c571271eb7785d248b1cad598b412994, type: 3}
+  openUpSprite: {fileID: 21300000, guid: b638be5b63fe7134aa2cd740d233d4a0, type: 3}
+  openForwardSprite: {fileID: 21300000, guid: a1c77964486c7b9439b10d8db11f0722, type: 3}
   onWaterSprite: {fileID: 21300000, guid: f4e3379b861a5d045b0266a3cf1b10c2, type: 3}
-  pokeUpSprite: {fileID: 21300000, guid: 8829c855ab5eb404da8548464a6ff607, type: 3}
-  pokeFwdSprite: {fileID: 21300000, guid: a67b9bdc02205594e982e64099d1d425, type: 3}
-  shieldSprite: {fileID: 21300000, guid: a1c77964486c7b9439b10d8db11f0722, type: 3}
   hideSprite: {fileID: 21300000, guid: 30f2232dca4f83c4f9788982f31183bb, type: 3}
   sunbeam: {fileID: 21300000, guid: 82427ca6d240afb4081653939cf85eb3, type: 3}
   collectSound: {fileID: 8300000, guid: 9c6cb5cfefa4ac341bf142599405a11f, type: 3}
@@ -745,10 +747,6 @@ MonoBehaviour:
   umbClosed: {fileID: 8300000, guid: 86e629f5ab81f78458f54a43d5858a5e, type: 3}
   splash: {fileID: 8300000, guid: 3ee0b6566ddc06d40a711ca98f386f27, type: 3}
   nimboid: {fileID: 8300000, guid: bc8d5a8b45aec2b4c8fccf9280c0938b, type: 3}
-  floodWater: {fileID: 0}
-  floodGround: {fileID: 0}
-  floodCloud: {fileID: 0}
-  floodUpdraft: {fileID: 1832410700}
 --- !u!61 &192481466
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1142,7 +1140,7 @@ GameObject:
   - 61: {fileID: 338520349}
   m_Layer: 0
   m_Name: updraft
-  m_TagString: Untagged
+  m_TagString: Updraft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1536,7 +1534,7 @@ GameObject:
   - 61: {fileID: 500040862}
   m_Layer: 0
   m_Name: updraft
-  m_TagString: Untagged
+  m_TagString: Updraft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1775,7 +1773,7 @@ GameObject:
   - 61: {fileID: 534746751}
   m_Layer: 0
   m_Name: updraft
-  m_TagString: Untagged
+  m_TagString: Updraft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1909,9 +1907,10 @@ GameObject:
   - 4: {fileID: 603171910}
   - 212: {fileID: 603171909}
   - 61: {fileID: 603171908}
+  - 114: {fileID: 603171911}
   m_Layer: 0
   m_Name: eventSwitch3
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1967,6 +1966,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 48
+--- !u!114 &603171911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 603171907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75eb7fc69f935fd47ade53b503dfcf78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floodUpdraft: {fileID: 1832410700}
 --- !u!1 &608894816
 GameObject:
   m_ObjectHideFlags: 0
@@ -1979,7 +1990,7 @@ GameObject:
   - 61: {fileID: 608894817}
   m_Layer: 0
   m_Name: updraft
-  m_TagString: Untagged
+  m_TagString: Updraft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2528,7 +2539,7 @@ GameObject:
   - 61: {fileID: 855182376}
   m_Layer: 0
   m_Name: updraft
-  m_TagString: Untagged
+  m_TagString: Updraft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2936,7 +2947,7 @@ GameObject:
   - 61: {fileID: 965487999}
   m_Layer: 0
   m_Name: sunbeam
-  m_TagString: Untagged
+  m_TagString: Sunbeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3337,7 +3348,7 @@ GameObject:
   - 61: {fileID: 1010998046}
   m_Layer: 0
   m_Name: sunbeam
-  m_TagString: Untagged
+  m_TagString: Sunbeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3688,7 +3699,7 @@ GameObject:
   - 61: {fileID: 1204153729}
   m_Layer: 0
   m_Name: updraft
-  m_TagString: Untagged
+  m_TagString: Updraft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3837,7 +3848,7 @@ GameObject:
   - 61: {fileID: 1302009138}
   m_Layer: 0
   m_Name: sunbeam
-  m_TagString: Untagged
+  m_TagString: Sunbeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4298,7 +4309,7 @@ GameObject:
   - 61: {fileID: 1528866778}
   m_Layer: 0
   m_Name: updraft
-  m_TagString: Untagged
+  m_TagString: Updraft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4816,7 +4827,7 @@ GameObject:
   - 61: {fileID: 1693107139}
   m_Layer: 0
   m_Name: updraft
-  m_TagString: Untagged
+  m_TagString: Updraft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5228,7 +5239,7 @@ GameObject:
   - 61: {fileID: 1786274345}
   m_Layer: 0
   m_Name: sunbeam
-  m_TagString: Untagged
+  m_TagString: Sunbeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5501,10 +5512,9 @@ GameObject:
   - 4: {fileID: 1832410703}
   - 212: {fileID: 1832410702}
   - 61: {fileID: 1832410701}
-  - 114: {fileID: 1832410704}
   m_Layer: 0
-  m_Name: updraft
-  m_TagString: Untagged
+  m_Name: floodupdraft
+  m_TagString: Updraft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5560,17 +5570,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 47
---- !u!114 &1832410704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1832410700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cdf5fa5846ada04fa35f5bba04c102c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1838977617
 GameObject:
   m_ObjectHideFlags: 0
@@ -5581,9 +5580,10 @@ GameObject:
   - 4: {fileID: 1838977620}
   - 212: {fileID: 1838977619}
   - 61: {fileID: 1838977618}
+  - 114: {fileID: 1838977621}
   m_Layer: 0
   m_Name: eventSwitch3
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5639,6 +5639,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 49
+--- !u!114 &1838977621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1838977617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75eb7fc69f935fd47ade53b503dfcf78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floodUpdraft: {fileID: 1832410700}
 --- !u!1 &1898668226
 GameObject:
   m_ObjectHideFlags: 0
@@ -5651,7 +5663,7 @@ GameObject:
   - 61: {fileID: 1898668227}
   m_Layer: 0
   m_Name: updraft
-  m_TagString: Untagged
+  m_TagString: Updraft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5787,7 +5799,7 @@ GameObject:
   - 61: {fileID: 1914027884}
   m_Layer: 0
   m_Name: updraft
-  m_TagString: Untagged
+  m_TagString: Updraft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5853,9 +5865,10 @@ GameObject:
   - 4: {fileID: 1918713925}
   - 212: {fileID: 1918713924}
   - 60: {fileID: 1918713923}
+  - 114: {fileID: 1918713926}
   m_Layer: 0
   m_Name: end
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5956,6 +5969,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 73
+--- !u!114 &1918713926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1918713922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2fed350f915e8442b8d6f2734640d3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScene: EndGame
 --- !u!1 &1921682964
 GameObject:
   m_ObjectHideFlags: 0
@@ -6158,7 +6183,7 @@ GameObject:
   - 61: {fileID: 1966035182}
   m_Layer: 0
   m_Name: updraft
-  m_TagString: Untagged
+  m_TagString: Updraft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
