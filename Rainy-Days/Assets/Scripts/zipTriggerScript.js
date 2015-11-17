@@ -10,7 +10,7 @@ function Update () {
 
 }
 
-function OnTriggerEnter2D(trig: Collider2D) {
+/*function OnTriggerEnter2D(trig: Collider2D) {
 	if (trig.name == "zipline") {
 		ps.inZipline = true;
 		ps.zipline = trig.gameObject;
@@ -26,3 +26,4 @@ function OnTriggerExit2D(trig: Collider2D) {
 		//ps.print("Zipline off!");
 	}
 }
+*/ //We deleted ziplines, so this was causing an error
