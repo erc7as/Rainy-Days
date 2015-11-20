@@ -2,6 +2,7 @@
 
 static var firstSwitch : boolean = true;
 var floodUpdraft : GameObject;
+var button : Sprite;
 
 function Start() {
 	floodUpdraft.SetActive(false);
@@ -14,4 +15,5 @@ function ButtonPress() {
 		floodUpdraft.SetActive(true);
 	}
 	Destroy(gameObject);
+	gameObject.GetComponent(SpriteRenderer).sprite = button;
 }
