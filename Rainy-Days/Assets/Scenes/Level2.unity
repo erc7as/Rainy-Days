@@ -37,6 +37,9 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+--- !u!127 &3
+LevelGameManager:
+  m_ObjectHideFlags: 0
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -65,7 +68,6 @@ LightmapSettings:
     m_TextureCompression: 0
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
-    m_ReflectionCompression: 2
   m_LightmapSnapshot: {fileID: 0}
   m_RuntimeCPUUsage: 25
 --- !u!196 &5
@@ -320,7 +322,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 247255509
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 815d37adcab4f1742b26dd6c521c53ce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 174c343d0c792e84284c9edcf5f51ea3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &119796071
 Transform:
@@ -576,7 +578,6 @@ AudioSource:
   m_Pitch: 1
   Loop: 1
   Mute: 0
-  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1.05566597
@@ -646,7 +647,6 @@ AudioSource:
   m_Pitch: 1
   Loop: 1
   Mute: 0
-  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -714,14 +714,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   jumpspeed: 20
-  zipspeed: 10
   direction: 0
   umbrellaOpen: 0
   grounded: 0
   onWater: 0
   inUpdraft: 0
-  inZipline: 0
-  onZipline: 0
   isPoking: 0
   isShielding: 0
   isHiding: 0
@@ -730,7 +727,6 @@ MonoBehaviour:
   respawnPoints:
   - {fileID: 1223404049}
   - {fileID: 1088785689}
-  zipline: {fileID: 0}
   closedNeutralSprite: {fileID: 21300000, guid: 680a62336e638144fb7e840cee85e642,
     type: 3}
   closedUpSprite: {fileID: 21300000, guid: 8829c855ab5eb404da8548464a6ff607, type: 3}
@@ -2283,7 +2279,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 247255509
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e2c301cd9d35fa849900388bbd1a07d9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e3f0a970b0139514492d50b8f1ba3d4c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &758061837
 Transform:
@@ -2337,7 +2333,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 247255509
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c1a2df6145ae1234a8da82b02ac1d831, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8a4d11e93a46dbc4cbdbf205217034a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &771562073
 Transform:
@@ -6537,7 +6533,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 247255509
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c1a2df6145ae1234a8da82b02ac1d831, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8a4d11e93a46dbc4cbdbf205217034a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &2085124508
 Transform:
