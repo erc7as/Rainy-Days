@@ -9,7 +9,7 @@ function Start () {
 }
 
 function ButtonPress() {
-	Bridge2.SetActive(true);
-	Destroy(Bridge1);
 	gameObject.GetComponent(SpriteRenderer).sprite = button;
+	Bridge2.SetActive(true);
+	Destroy(Bridge1);	
 }
