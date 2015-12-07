@@ -12,8 +12,8 @@ var isPoking : boolean = false;
 var isShielding : boolean = false;
 var isHiding : boolean = false;
 
-var sunbeamCounter : int = 0;
-var numSunbeams : int = 4;
+static var sunbeamCounter : int = 0;
+var numSunbeams : int = 5;
 var respawnPoints : GameObject[];
 
 var closedNeutralSprite : Sprite;
