@@ -541,23 +541,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   jumpspeed: 20
-  zipspeed: 10
   direction: 0
   umbrellaOpen: 0
   grounded: 0
   onWater: 0
   inUpdraft: 0
-  inZipline: 0
-  onZipline: 0
   isPoking: 0
   isShielding: 0
   isHiding: 0
-  sunbeamCounter: 0
-  numSunbeams: 4
+  numSunbeams: 5
   respawnPoints:
   - {fileID: 0}
   - {fileID: 0}
-  zipline: {fileID: 0}
   closedNeutralSprite: {fileID: 21300000, guid: 680a62336e638144fb7e840cee85e642,
     type: 3}
   closedUpSprite: {fileID: 21300000, guid: 8829c855ab5eb404da8548464a6ff607, type: 3}
@@ -613,7 +608,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: numSunbeams
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 168842}
