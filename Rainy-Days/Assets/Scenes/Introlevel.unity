@@ -290,7 +290,7 @@ SpriteRenderer:
   m_SortingLayerID: -1916306283
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5252f691c4fe9484ba144a0b113bbab0, type: 3}
-  m_Color: {r: .110294104, g: .68598628, b: 1, a: 1}
+  m_Color: {r: .515787244, g: .657951295, b: .779411793, a: 1}
 --- !u!4 &629525014
 Transform:
   m_ObjectHideFlags: 0
@@ -775,6 +775,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8235362, guid: bd38a067ec75a0c4d86e4d04d5a02ff4, type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d6148744fde3516438497330c4d0ac1c, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd38a067ec75a0c4d86e4d04d5a02ff4, type: 2}
   m_IsPrefabParent: 0

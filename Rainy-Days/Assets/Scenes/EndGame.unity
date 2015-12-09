@@ -812,7 +812,6 @@ MonoBehaviour:
   isPoking: 0
   isShielding: 0
   isHiding: 0
-  sunbeamCounter: 0
   numSunbeams: 2
   respawnPoints:
   - {fileID: 0}
@@ -1040,7 +1039,7 @@ SpriteRenderer:
   m_SortingLayerID: -1916306283
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5252f691c4fe9484ba144a0b113bbab0, type: 3}
-  m_Color: {r: .737254918, g: .737254918, b: .737254918, a: 1}
+  m_Color: {r: .382569194, g: .790612578, b: .897058845, a: 1}
 --- !u!4 &1961758501
 Transform:
   m_ObjectHideFlags: 0
