@@ -163,7 +163,7 @@ function OnGUI () {
         Application.Quit();
     }
 
-    GUI.Box(Rect(1385,10,200,30),"You've found: " + sunbeamCounter + "/5 Sunbeams!");
+    GUI.Box(Rect(120,10,200,30),"You've found: " + sunbeamCounter + "/5 Sunbeams!");
 }
 
 

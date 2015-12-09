@@ -1,0 +1,60 @@
+Initialize engine version: 5.1.3f1 (b0a23b31c3d8)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics 4000 (ID=0x166)
+    Vendor:   Intel
+    VRAM:     128 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Student\Documents\Rainy-Days\Builds\ESE-12-9-Build_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Student\Documents\Rainy-Days\Builds\ESE-12-9-Build_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Student\Documents\Rainy-Days\Builds\ESE-12-9-Build_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\Student\Documents\Rainy-Days\Builds\ESE-12-9-Build_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\Users\Student\Documents\Rainy-Days\Builds\ESE-12-9-Build_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Student\Documents\Rainy-Days\Builds\ESE-12-9-Build_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Student\Documents\Rainy-Days\Builds\ESE-12-9-Build_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Student\Documents\Rainy-Days\Builds\ESE-12-9-Build_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Student\Documents\Rainy-Days\Builds\ESE-12-9-Build_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\Users\Student\Documents\Rainy-Days\Builds\ESE-12-9-Build_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+Platform assembly: C:\Users\Student\Documents\Rainy-Days\Builds\ESE-12-9-Build_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Student\Documents\Rainy-Days\Builds\ESE-12-9-Build_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Student\Documents\Rainy-Days\Builds\ESE-12-9-Build_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Student\Documents\Rainy-Days\Builds\ESE-12-9-Build_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Student\Documents\Rainy-Days\Builds\ESE-12-9-Build_Data\Managed\System.Core.dll (this message is harmless)
+- Completed reload, in  0.192 seconds
+desktop: 1600x900 50Hz; virtual: 1600x900 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+Platform assembly: C:\Users\Student\Documents\Rainy-Days\Builds\ESE-12-9-Build_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\Users\Student\Documents\Rainy-Days\Builds\ESE-12-9-Build_Data\Managed\Boo.Lang.dll (this message is harmless)
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.528547 ms
+
+Unloading 21 unused Assets to reduce memory usage. Loaded Objects now: 2603.
+Total: 0.843938 ms (FindLiveObjects: 0.153551 ms CreateObjectMapping: 0.055262 ms MarkObjects: 0.610651 ms  DeleteObjects: 0.024078 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.591562 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 812.
+Total: 0.350128 ms (FindLiveObjects: 0.053288 ms CreateObjectMapping: 0.018947 ms MarkObjects: 0.271576 ms  DeleteObjects: 0.005526 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.619335 ms
+
+Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 620.
+Total: 0.272760 ms (FindLiveObjects: 0.036710 ms CreateObjectMapping: 0.017368 ms MarkObjects: 0.200524 ms  DeleteObjects: 0.017762 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.638283 ms
+
+Unloading 36 unused Assets to reduce memory usage. Loaded Objects now: 263.
+Total: 0.230523 ms (FindLiveObjects: 0.029210 ms CreateObjectMapping: 0.016578 ms MarkObjects: 0.159472 ms  DeleteObjects: 0.024868 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.324865 ms
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 339.
+Total: 0.200919 ms (FindLiveObjects: 0.024473 ms CreateObjectMapping: 0.014210 ms MarkObjects: 0.151182 ms  DeleteObjects: 0.010657 ms)
+
