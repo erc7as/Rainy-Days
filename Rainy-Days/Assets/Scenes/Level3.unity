@@ -157,7 +157,7 @@ GameObject:
   - 212: {fileID: 75670696}
   - 61: {fileID: 75670695}
   m_Layer: 0
-  m_Name: blockage
+  m_Name: cloud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1256,7 +1256,7 @@ GameObject:
   - 212: {fileID: 447221603}
   - 61: {fileID: 447221602}
   m_Layer: 0
-  m_Name: blockage
+  m_Name: cloud1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4149,7 +4149,7 @@ GameObject:
   - 212: {fileID: 1477782105}
   - 61: {fileID: 1477782104}
   m_Layer: 0
-  m_Name: blockage
+  m_Name: cloud(1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5119,7 +5119,7 @@ GameObject:
   - 212: {fileID: 1726616849}
   - 61: {fileID: 1726616848}
   m_Layer: 0
-  m_Name: blockage
+  m_Name: cloud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5239,8 +5239,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1732471591}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 128.800003, y: 1.39999998, z: 0}
-  m_LocalScale: {x: .785111487, y: 2.78376317, z: 1}
+  m_LocalPosition: {x: 128.899994, y: 2.4000001, z: 0}
+  m_LocalScale: {x: .853219211, y: 3.16513324, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2

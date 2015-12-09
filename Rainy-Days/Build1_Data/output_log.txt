@@ -1,0 +1,56 @@
+Initialize engine version: 5.1.3f1 (b0a23b31c3d8)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: AMD Radeon R9 M265X (ID=0x6823)
+    Vendor:   ATI
+    VRAM:     2026 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Robert\Documents\GitHub\Rainy-Days\Rainy-Days\Build1_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Robert\Documents\GitHub\Rainy-Days\Rainy-Days\Build1_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Robert\Documents\GitHub\Rainy-Days\Rainy-Days\Build1_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\Robert\Documents\GitHub\Rainy-Days\Rainy-Days\Build1_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\Users\Robert\Documents\GitHub\Rainy-Days\Rainy-Days\Build1_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Robert\Documents\GitHub\Rainy-Days\Rainy-Days\Build1_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Robert\Documents\GitHub\Rainy-Days\Rainy-Days\Build1_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Robert\Documents\GitHub\Rainy-Days\Rainy-Days\Build1_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Robert\Documents\GitHub\Rainy-Days\Rainy-Days\Build1_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\Users\Robert\Documents\GitHub\Rainy-Days\Rainy-Days\Build1_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+Platform assembly: C:\Users\Robert\Documents\GitHub\Rainy-Days\Rainy-Days\Build1_Data\Managed\System.Core.dll (this message is harmless)
+- Completed reload, in  0.642 seconds
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+Platform assembly: C:\Users\Robert\Documents\GitHub\Rainy-Days\Rainy-Days\Build1_Data\Managed\System.dll (this message is harmless)
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.632316 ms
+
+Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 761.
+Total: 0.650163 ms (FindLiveObjects: 0.112900 ms CreateObjectMapping: 0.063160 ms MarkObjects: 0.392782 ms  DeleteObjects: 0.079345 ms)
+
+Platform assembly: C:\Users\Robert\Documents\GitHub\Rainy-Days\Rainy-Days\Build1_Data\Managed\Boo.Lang.dll (this message is harmless)
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.348403 ms
+
+Unloading 29 unused Assets to reduce memory usage. Loaded Objects now: 688.
+Total: 0.631609 ms (FindLiveObjects: 0.097504 ms CreateObjectMapping: 0.054081 ms MarkObjects: 0.382913 ms  DeleteObjects: 0.095530 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.552180 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 588.
+Total: 0.528973 ms (FindLiveObjects: 0.074608 ms CreateObjectMapping: 0.051713 ms MarkObjects: 0.356069 ms  DeleteObjects: 0.045791 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.870748 ms
+
+Unloading 48 unused Assets to reduce memory usage. Loaded Objects now: 215.
+Total: 0.442126 ms (FindLiveObjects: 0.034738 ms CreateObjectMapping: 0.033554 ms MarkObjects: 0.263697 ms  DeleteObjects: 0.109347 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.918597 ms
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 761.
+Total: 0.505287 ms (FindLiveObjects: 0.082504 ms CreateObjectMapping: 0.052107 ms MarkObjects: 0.319357 ms  DeleteObjects: 0.049739 ms)
+
