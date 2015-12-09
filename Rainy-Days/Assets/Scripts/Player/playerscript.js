@@ -154,6 +154,7 @@ function OnGUI () {
 
     // Make the first button. If it is pressed, Application.Loadlevel (1) will be executed
     if (GUI.Button (Rect (20,40,80,20), "Restart")) {
+        sunbeamCounter = 0;
         Application.LoadLevel ("Introlevel");
     }
 
@@ -161,6 +162,8 @@ function OnGUI () {
     if (GUI.Button (Rect (20,70,80,20), "Quit")) {
         Application.Quit();
     }
+
+    GUI.Box(Rect(1385,10,200,30),"You've found: " + sunbeamCounter + "/5 Sunbeams!");
 }
 
 
