@@ -95,7 +95,7 @@ function OnCollisionEnter2D(coll: Collision2D) {
 ////    	print("Ground collision");
 //	}
 
-	if (coll.gameObject.name == "blockage" && sunbeamCounter == numSunbeams) {
+	if (coll.gameObject.name == "blockage" && sunbeamCounter >= numSunbeams) {
 		Destroy(coll.gameObject);
 		grounded = false;
 	}

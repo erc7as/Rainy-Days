@@ -1,14 +1,14 @@
 ﻿#pragma strict
 var updraft1: GameObject;
-var sunbeams;
+var sunbeam;
 
 function Start () {
-	updraft1.SetActive(false);
+updraft1.SetActive(false);
 }
 
 function Update () {
-	sunbeams= playerscript.sunbeamCounter;
-	if(sunbeams==5){
+	sunbeam= playerscript.sunbeamCounter;
+	if(sunbeam==5){
 	updraft1.SetActive(true);
 	}
 	
