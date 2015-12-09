@@ -3,6 +3,7 @@
 var speed : int = 10;
 var jumpspeed : int = 20;
 
+
 var direction : boolean = true; //facing left is true
 var umbrellaOpen : boolean = false; //default will be to have the umbrella be up
 var grounded : boolean = false;
@@ -143,7 +144,25 @@ function Update () {
 	if(!onWater) { actionKeysUpdate(); }
 	if(!isHiding) { moveKeysUpdate(); }
 	grounded = false;
+
+
 }
+
+function OnGUI () {
+    // Make a background box
+    GUI.Box (Rect (10,10,100,90), "Game Menu");
+
+    // Make the first button. If it is pressed, Application.Loadlevel (1) will be executed
+    if (GUI.Button (Rect (20,40,80,20), "Restart")) {
+        Application.LoadLevel ("Introlevel");
+    }
+
+    // Make the second button.
+    if (GUI.Button (Rect (20,70,80,20), "Quit")) {
+        Application.Quit();
+    }
+}
+
 
 function fallingUpdate() {
 	if (umbrellaOpen) {
