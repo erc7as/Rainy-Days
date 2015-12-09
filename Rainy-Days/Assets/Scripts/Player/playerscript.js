@@ -53,7 +53,8 @@ function OnTriggerEnter2D(trig: Collider2D) {
 	}
 	
 	else if(trig.tag == "Level") {
-		trig.gameObject.BroadcastMessage("LoadLevel");
+	    trig.gameObject.BroadcastMessage("LoadLevel");
+	    sunbeamCounter = 0;
 	}
 	
 	else if (trig.tag == "Sunbeam") {
